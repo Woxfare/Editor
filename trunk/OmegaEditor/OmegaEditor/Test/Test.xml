@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<woxfare>
+    <player name="PowerRanger" folder="DefaultPlayers">
+        <color r="0" g="0" b="0"/>
+        <life value="99"/>
+        <weapon name="Default"/>
+        <textures>
+            <Head Back="PRHeadBase.png" Bottom="PRHeadBase.png" Front="PRHeadFront.png" Left="PRHeadLeft.png" Right="PRHeadRight.png" Top="PRHeadTop.png"/>
+            <Body Back="PRBodyBack.png" Bottom="PRHeadBase.png" Front="PRBodyFront.png" Left="PRBodyBase.png" Right="PRBodyBase.png" Top="PRHeadBase.png"/>
+            <ArmL Back="PRArmBase.png" Bottom="PRArmBottom.png" Front="PRArmBase.png" Left="PRArmBase.png" Right="PRArmBase.png" Top=""/>
+            <ArmR Back="PRArmBase.png" Bottom="PRArmBottom.png" Front="PRArmBase.png" Left="PRArmBase.png" Right="PRArmBase.png" Top=""/>
+            <LegL Back="PRLegBase.png" Bottom="" Front="PRLegBase.png" Left="PRLegBase.png" Right="PRLegBase.png" Top="PRHeadBase.png"/>
+            <LegR Back="PRLegBase.png" Bottom="" Front="PRLegBase.png" Left="PRLegBase.png" Right="PRLegBase.png" Top="PRHeadBase.png"/>
+        </textures>
+    </player>
+    <map name="MapaTest" folder="DefaultMaps">
+        <color r="255" g="255" b="255"/>
+        <terrain texture="lifeItem.png"/>
+        <materials>
+            <material name="cajaMetalAdornada.png_254_254_254"/>
+            <material name="8640003215_8071ace2f6_o.png_254_254_254"/>
+            <material name="crate.png_254_254_254"/>
+        </materials>
+        <objects>
+            <cube name="ObjectTesting2" number="10">
+                <pos x="-9" y="0" z="2"/>
+                <pos x="-10" y="0" z="2"/>
+                <pos x="-10" y="0" z="3"/>
+                <pos x="-10" y="0" z="4"/>
+                <pos x="-10" y="1" z="4"/>
+                <pos x="-9" y="0" z="4"/>
+                <pos x="-10" y="1" z="2"/>
+                <pos x="-10" y="2" z="2"/>
+                <pos x="-10" y="2" z="4"/>
+                <pos x="-10" y="2" z="3"/>
+            </cube>
+            <cube name="ObjetoTesting" number="31">
+                <pos x="2" y="0" z="0"/>
+                <pos x="2" y="1" z="0"/>
+                <pos x="2" y="0" z="-1"/>
+                <pos x="2" y="1" z="-1"/>
+                <pos x="-1" y="0" z="-1"/>
+                <pos x="-1" y="0" z="-2"/>
+                <pos x="-1" y="0" z="-3"/>
+                <pos x="2" y="0" z="-2"/>
+                <pos x="2" y="1" z="-2"/>
+                <pos x="2" y="2" z="-2"/>
+                <pos x="2" y="2" z="-1"/>
+                <pos x="7" y="0" z="2"/>
+                <pos x="2" y="2" z="0"/>
+                <pos x="7" y="0" z="3"/>
+                <pos x="7" y="1" z="2"/>
+                <pos x="7" y="2" z="2"/>
+                <pos x="6" y="0" z="3"/>
+                <pos x="7" y="0" z="4"/>
+                <pos x="7" y="1" z="4"/>
+                <pos x="7" y="2" z="4"/>
+                <pos x="7" y="2" z="3"/>
+                <pos x="7" y="3" z="2"/>
+                <pos x="6" y="2" z="2"/>
+                <pos x="6" y="2" z="4"/>
+                <pos x="7" y="3" z="4"/>
+                <pos x="6" y="3" z="4"/>
+                <pos x="6" y="3" z="2"/>
+                <pos x="6" y="4" z="2"/>
+                <pos x="6" y="4" z="4"/>
+                <pos x="7" y="4" z="3"/>
+                <pos x="6" y="4" z="3"/>
+            </cube>
+        </objects>
+        <doors>
+            <pos x="6" y="1" z="3"/>
+            <pos x="-9" y="0" z="3"/>
+        </doors>
+    </map>
+    <enemy name="Picachu" folder="DefaultEnemies">
+        <color r="255" g="255" b="255"/>
+        <life value="10"/>
+        <points value="0"/>
+        <textures>
+            <Head Back="picaHeadAll.png" Bottom="picaHeadAll.png" Front="picaface.png" Left="picaHeadAll.png" Right="picaHeadAll.png" Top="picaHeadTop.png"/>
+            <Body Back="picaBodyBack.png" Bottom="picaHeadAll.png" Front="picaHeadAll.png" Left="picaHeadAll.png" Right="picaHeadAll.png" Top="picaHeadAll.png"/>
+            <ArmL Back="picaHeadAll.png" Bottom="picaLegFront.png" Front="picaHeadAll.png" Left="picaHeadAll.png" Right="picaHeadAll.png" Top="picaHeadAll.png"/>
+            <ArmR Back="picaHeadAll.png" Bottom="picaLegFront.png" Front="picaHeadAll.png" Left="picaHeadAll.png" Right="picaHeadAll.png" Top="picaHeadAll.png"/>
+            <LegL Back="picaHeadAll.png" Bottom="picaHeadAll.png" Front="picaLegFront.png" Left="picaHeadAll.png" Right="picaHeadAll.png" Top="picaHeadAll.png"/>
+            <LegR Back="picaHeadAll.png" Bottom="picaHeadAll.png" Front="picaLegFront.png" Left="picaHeadAll.png" Right="picaHeadAll.png" Top="picaHeadAll.png"/>
+        </textures>
+		<type botType="Simple" behaviour="Follower"/>
+    </enemy>
+    <item name="ItemTest" folder="DefaultItems">
+        <color r="255" g="255" b="255"/>
+        <type value="Health" quantity="40"/>
+        <textures Back="lifeItem.png" Bottom="lifeItem.png" Front="lifeItem.png" Left="lifeItem.png" Right="lifeItem.png" Top="lifeItem.png"/>
+    </item>
+    <textures>
+        <texture name="8640003215_8071ace2f6_o.png"/>
+        <texture name="PRArmBase.png"/>
+        <texture name="PRArmBottom.png"/>
+        <texture name="PRBodyBack.png"/>
+        <texture name="PRBodyBase.png"/>
+        <texture name="PRBodyFront.png"/>
+        <texture name="PRHeadBase.png"/>
+        <texture name="PRHeadFront.png"/>
+        <texture name="PRHeadLeft.png"/>
+        <texture name="PRHeadRight.png"/>
+        <texture name="PRHeadTop.png"/>
+        <texture name="PRLegBase.png"/>
+        <texture name="cajaMetalAdornada.png"/>
+        <texture name="crate.png"/>
+        <texture name="lifeItem.png"/>
+        <texture name="picaHeadAll.png"/>
+        <texture name="picaHeadTop.png"/>
+        <texture name="picaface.png"/>
+    </textures>
+    <game name="Test" folder="DefaultGames" rounds="5">
+        <enemies number="1" min="1" max="5" bosses="1" interval="1">
+            <enemy name="Picachu"/>
+        </enemies>
+        <items number="1" interval="5">
+            <item name="ItemTest"/>
+        </items>
+        <player name="PowerRanger"/>
+        <map name="MapaTest"/>
+    </game>
+    <weapon name="Default" folder="DefaultWeapons">
+        <color r="255" g="255" b="255"/>
+        <type value="SimpleShot"/>
+        <features bullets="200"/>
+    </weapon>
+</woxfare>

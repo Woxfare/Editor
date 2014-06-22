@@ -1,0 +1,46 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Media/find.png</file>
+        <file>Media/heart.png</file>
+        <file>Media/gun.png</file>
+        <file>Media/character.png</file>
+        <file>Media/plus.png</file>
+        <file>Media/enemy.png</file>
+        <file>Media/tree_folder.png</file>
+        <file>Media/add.png</file>
+        <file>Media/delete.png</file>
+        <file>Media/down_arrow.png</file>
+        <file>Media/edit.png</file>
+        <file>Media/exit.png</file>
+        <file>Media/folder.png</file>
+        <file>Media/item.png</file>
+        <file>Media/minus_black.png</file>
+        <file>Media/omega.ico</file>
+        <file>Media/omega.png</file>
+        <file>Media/plus_black.png</file>
+        <file>Media/redo.png</file>
+        <file>Media/save.png</file>
+        <file>Media/sceneobj.png</file>
+        <file>Media/undo.png</file>
+        <file>Media/export.png</file>
+        <file>Media/import.png</file>
+        <file>Media/mbag.png</file>
+        <file>Media/wall.png</file>
+        <file>Media/bullet.png</file>
+        <file>Media/map.png</file>
+        <file>Media/color.png</file>
+        <file>Media/omega2.png</file>
+        <file>Media/puzzle.png</file>
+        <file>Media/arrow.png</file>
+        <file>Media/texture.png</file>
+        <file>Media/play.png</file>
+        <file>Media/game.png</file>
+        <file>Media/equal.png</file>
+        <file>Media/launch.png</file>
+        <file>Media/clear.png</file>
+        <file>Media/load.png</file>
+        <file>Media/door.png</file>
+        <file>Media/splash.png</file>
+        <file>Media/damage.png</file>
+    </qresource>
+</RCC>
