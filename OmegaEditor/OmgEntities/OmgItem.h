@@ -32,28 +32,15 @@
 #ifndef OMGITEM_H
 #define OMGITEM_H
 
-#include "OmgSceneObj.h"
+#include "OmgCube.h"
 #include "InputData/QOmgListItem.h"
 
 class OmgWeapon;
-
 class QXmlStreamWriter;
 
-class OmgItem : public OmgSceneObj
+class OmgItem : public OmgCube
 {
 public:
-    /*!
-     * \brief OmgItem
-     * \param aName
-     */
-    OmgItem( QString aName);
-
-    /*!
-     * \brief OmgItem
-     * \param a_name
-     * \param aTextures
-     */
-    OmgItem( QString a_name, std::map<std::string, std::string> aTextures );
 
     /*!
      * \brief OmgItem
