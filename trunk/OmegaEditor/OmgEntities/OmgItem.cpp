@@ -3,28 +3,13 @@
 #include <QXmlStreamWriter>
 #include "OmgEntities/OmgWeapon.h"
 
-OmgItem::OmgItem(QString aName ) : OmgSceneObj ( aName )
+OmgItem::OmgItem(QString aName, std::map<std::string, std::string> aTextures, int rgb[3]) : OmgCube ( aName, aTextures, rgb )
 {
     setType(Omega::Item);
     _folder = "DefaultItems";
     weapon = NULL;
     quantity = 0;
-}
-
-OmgItem::OmgItem(QString a_name, std::map<std::string, std::string> aTextures) : OmgSceneObj ( a_name, aTextures )
-{
-    setType(Omega::Item);
-    _folder = "DefaultItems";
-    weapon = NULL;
-    quantity = 0;
-}
-
-OmgItem::OmgItem(QString aName, std::map<std::string, std::string> aTextures, int rgb[3]) : OmgSceneObj ( aName, aTextures, rgb)
-{
-    setType(Omega::Item);
-    _folder = "DefaultItems";
-    weapon = NULL;
-    quantity = 0;
+	createCustomPixmap();
 }
 
 OmgItem::~OmgItem()

@@ -29,45 +29,37 @@
 
 */
 
-#ifndef OMGSCENEOBJ_H
-#define OMGSCENEOBJ_H
+#ifndef OMGCUBE_H
+#define OMGCUBE_H
 
-#include "OmgCube.h"
+#include "OmgEntity.h"
 #include "InputData/QOmgListItem.h"
 #include <QPixmap>
 
-
-class OmgSceneObj : public OmgCube
+class OmgCube : public OmgEntity
 {
 public:
 
-    //- OmgSceneObj
-    //? String Constructor
-    //> QString a_name
-    //> std::map<std::string, std::string> a_texture
-    OmgSceneObj(QString a_name, std::map<std::string, std::string> a_textures, int rgb[3]);
-
-    //- OmgSceneObj
-    //? Default Destructor
-    ~OmgSceneObj();
-
     /*!
-     * \brief setObjectType
-     * \param aType
+     * \brief Constructor
      */
-    void setObjectType( Omega::SceneObjType aType );
+    OmgCube(QString a_name, std::map<std::string, std::string> a_textures, int rgb[3]);
 
     /*!
-     * \brief getObjectType
+     * \brief Destructor
+     */
+    ~OmgCube();
+
+    /*!
+     * \brief getTextures
      * \return
      */
-    Omega::SceneObjType getObjectType( void );
+    std::map<std::string, std::string> getTextures( void );
 
     /*!
-     * \brief getObjectTypeStr
-     * \return
+     * \brief createCustomPixmap
      */
-    QString getObjectTypeStr( void );
+    void createCustomPixmap( void );
 
     /*!
      * \brief writeInfo
@@ -78,9 +70,9 @@ public:
 protected:
 
     /*!
-     * \brief _typeObj
+     * \brief _m_textures
      */
-    Omega::SceneObjType _typeObj;
+    std::map< std::string, std::string> _m_textures;
 
     /*!
      * \brief _baseColor
