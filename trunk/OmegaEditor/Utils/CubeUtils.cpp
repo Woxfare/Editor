@@ -327,6 +327,8 @@ CubeUtils::createCubeByFaces(Ogre::String name, float ambientColor[3],  Ogre::ui
 void
 CubeUtils::createCubeMesh(std::string name, std::map<std::string, std::string> textures, int rgb[3])
 {
+  std::map< std::string, Ogre::MaterialPtr > map_materials;
+  std::map< std::string, std::string > map_texture_materials;
   Ogre::SceneManager* pSceneManager = OgreManager::getInstance()->getSceneManager();
   Ogre::ManualObject* manual;
   try
@@ -338,54 +340,40 @@ CubeUtils::createCubeMesh(std::string name, std::map<std::string, std::string> t
     manual = pSceneManager->createManualObject(name);
   }
 
+  // First create the material with the base colour
   Ogre::ColourValue baseColour(rgb[0]/255.0f,rgb[1]/255.0f,rgb[2]/255.0f);
+  Ogre::MaterialPtr matColour = Ogre::MaterialManager::getSingleton().create( name + "MatColour", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+  matColour->setAmbient(Ogre::ColourValue(0,0,0));
+  matColour->setSpecular(Ogre::ColourValue(0.5,0.5,0.5));
+  matColour->getTechnique(0)->getPass(0)->setDiffuse(baseColour);
 
-  //Setting up material of every face.
-  Ogre::MaterialPtr top = Ogre::MaterialManager::getSingleton().create(name+"MatTop", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-  top->setAmbient(Ogre::ColourValue(0,0,0));
-  top->setSpecular(Ogre::ColourValue(0.5,0.5,0.5));
-  top->getTechnique(0)->getPass(0)->setDiffuse(baseColour);
-  if(textures["Top"]!="")
-    top->getTechnique(0)->getPass(0)->createTextureUnitState(textures["Top"]);
+  // Then copy the material and add the texture
+  std::string texturesPositions[6] = { "Top", "Bottom", "Left", "Right", "Front", "Back" };
+  std::string textureName;
+  Ogre::MaterialPtr material;
+  for( int i = 0; i < 6; ++i )
+  {
+	  textureName = textures[texturesPositions[i]];
+	  if( textureName != "" )
+	  {
+		if( map_texture_materials.find(textureName) != map_texture_materials.end() )
+		{
+			material = map_materials[map_texture_materials[textureName]];
+		}
+		else
+		{
+			material = matColour->clone( name + "Mat" + texturesPositions[i] );
+			material->getTechnique(0)->getPass(0)->createTextureUnitState(textureName);
+			map_texture_materials[textureName] = texturesPositions[i];
+		}
+	  }
 
-  Ogre::MaterialPtr bot = Ogre::MaterialManager::getSingleton().create(name+"MatBottom", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-  bot->setAmbient(Ogre::ColourValue(0,0,0));
-  bot->setSpecular(Ogre::ColourValue(0.5,0.5,0.5));
-  bot->getTechnique(0)->getPass(0)->setDiffuse(baseColour);
-  if(textures["Bottom"]!="")
-    bot->getTechnique(0)->getPass(0)->createTextureUnitState(textures["Bottom"]);
-
-  Ogre::MaterialPtr left = Ogre::MaterialManager::getSingleton().create(name+"MatLeft", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-  left->setAmbient(Ogre::ColourValue(0,0,0));
-  left->setSpecular(Ogre::ColourValue(0.5,0.5,0.5));
-  left->getTechnique(0)->getPass(0)->setDiffuse(baseColour);
-  if(textures["Left"]!="")
-    left->getTechnique(0)->getPass(0)->createTextureUnitState(textures["Left"]);
-
-  Ogre::MaterialPtr right = Ogre::MaterialManager::getSingleton().create(name+"MatRight", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-  right->setAmbient(Ogre::ColourValue(0,0,0));
-  right->setSpecular(Ogre::ColourValue(0.5,0.5,0.5));
-  right->getTechnique(0)->getPass(0)->setDiffuse(baseColour);
-  if(textures["Right"]!="")
-    right->getTechnique(0)->getPass(0)->createTextureUnitState(textures["Right"]);
-
-  Ogre::MaterialPtr front = Ogre::MaterialManager::getSingleton().create(name+"MatFront", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-  front->setAmbient(Ogre::ColourValue(0,0,0));
-  front->setSpecular(Ogre::ColourValue(0.5,0.5,0.5));
-  front->getTechnique(0)->getPass(0)->setDiffuse(baseColour);
-  if(textures["Front"]!="")
-    front->getTechnique(0)->getPass(0)->createTextureUnitState(textures["Front"]);
-
-  Ogre::MaterialPtr back = Ogre::MaterialManager::getSingleton().create(name+"MatBack", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-  back->setAmbient(Ogre::ColourValue(0,0,0));
-  back->setSpecular(Ogre::ColourValue(0.5,0.5,0.5));
-  back->getTechnique(0)->getPass(0)->setDiffuse(baseColour);
-  if(textures["Back"]!="")
-    back->getTechnique(0)->getPass(0)->createTextureUnitState(textures["Back"]);
+	  map_materials[texturesPositions[i]] = material;
+  }
 
   manual->setDynamic(true);
 
-  manual->begin(name + "MatBottom", Ogre::RenderOperation::OT_TRIANGLE_LIST);
+  manual->begin(map_materials["Bottom"]->getName(), Ogre::RenderOperation::OT_TRIANGLE_LIST);
   manual->normal(0,1,0);
   manual->position(0.5, -0.5, 0.5);
   manual->textureCoord(1, 0);
@@ -399,7 +387,7 @@ CubeUtils::createCubeMesh(std::string name, std::map<std::string, std::string> t
   manual->end();
 
   // Top
-  manual->begin(name + "MatTop", Ogre::RenderOperation::OT_TRIANGLE_LIST);
+  manual->begin( map_materials["Top"]->getName(), Ogre::RenderOperation::OT_TRIANGLE_LIST);
   manual->normal(0,1,0);
   manual->position(0.5, 0.5, 0.5);
   manual->textureCoord(1, 1);
@@ -413,7 +401,7 @@ CubeUtils::createCubeMesh(std::string name, std::map<std::string, std::string> t
   manual->end();
 
   // Left
-  manual->begin(name + "MatLeft", Ogre::RenderOperation::OT_TRIANGLE_LIST);
+  manual->begin(map_materials["Left"]->getName(), Ogre::RenderOperation::OT_TRIANGLE_LIST);
   manual->normal(1,0,0);
   manual->position(-0.5, -0.5, 0.5);
   manual->textureCoord(1, 1);
@@ -427,7 +415,7 @@ CubeUtils::createCubeMesh(std::string name, std::map<std::string, std::string> t
   manual->end();
 
   // Right
-  manual->begin(name + "MatRight", Ogre::RenderOperation::OT_TRIANGLE_LIST);
+  manual->begin(map_materials["Right"]->getName(), Ogre::RenderOperation::OT_TRIANGLE_LIST);
   manual->normal(1,0,0);
   manual->position(0.5, -0.5, 0.5);
   manual->textureCoord(0, 1);
@@ -441,7 +429,7 @@ CubeUtils::createCubeMesh(std::string name, std::map<std::string, std::string> t
   manual->end();
 
   // Front
-  manual->begin(name + "MatFront", Ogre::RenderOperation::OT_TRIANGLE_LIST);
+  manual->begin(map_materials["Front"]->getName(), Ogre::RenderOperation::OT_TRIANGLE_LIST);
   manual->normal(0,0,1);
   manual->position(-0.5, -0.5, 0.5);
   manual->textureCoord(0, 1);
@@ -455,7 +443,7 @@ CubeUtils::createCubeMesh(std::string name, std::map<std::string, std::string> t
   manual->end();
 
   // Back
-  manual->begin(name + "MatBack", Ogre::RenderOperation::OT_TRIANGLE_LIST);
+  manual->begin(map_materials["Back"]->getName(), Ogre::RenderOperation::OT_TRIANGLE_LIST);
   manual->normal(0,0,1);
   manual->position(-0.5, -0.5, -0.5);
   manual->textureCoord(1, 1);
