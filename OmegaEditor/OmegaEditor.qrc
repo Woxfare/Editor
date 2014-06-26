@@ -1,0 +1,45 @@
+<RCC>
+    <qresource prefix="/OmegaEditor">
+        <file>Resources/Icons/add.png</file>
+        <file>Resources/Icons/arrow.png</file>
+        <file>Resources/Icons/bullet.png</file>
+        <file>Resources/Icons/character.png</file>
+        <file>Resources/Icons/clear.png</file>
+        <file>Resources/Icons/color.png</file>
+        <file>Resources/Icons/damage.png</file>
+        <file>Resources/Icons/delete.png</file>
+        <file>Resources/Icons/door.png</file>
+        <file>Resources/Icons/down_arrow.png</file>
+        <file>Resources/Icons/edit.png</file>
+        <file>Resources/Icons/enemy.png</file>
+        <file>Resources/Icons/equal.png</file>
+        <file>Resources/Icons/exit.png</file>
+        <file>Resources/Icons/export.png</file>
+        <file>Resources/Icons/find.png</file>
+        <file>Resources/Icons/folder.png</file>
+        <file>Resources/Icons/game.png</file>
+        <file>Resources/Icons/gun.png</file>
+        <file>Resources/Icons/heart.png</file>
+        <file>Resources/Icons/import.png</file>
+        <file>Resources/Icons/item.png</file>
+        <file>Resources/Icons/load.png</file>
+        <file>Resources/Icons/map.png</file>
+        <file>Resources/Icons/mbag.png</file>
+        <file>Resources/Icons/minus_black.png</file>
+        <file>Resources/Icons/omega.ico</file>
+        <file>Resources/Icons/omega.png</file>
+        <file>Resources/Icons/omega2.png</file>
+        <file>Resources/Icons/play.png</file>
+        <file>Resources/Icons/plus.png</file>
+        <file>Resources/Icons/plus_black.png</file>
+        <file>Resources/Icons/puzzle.png</file>
+        <file>Resources/Icons/redo.png</file>
+        <file>Resources/Icons/save.png</file>
+        <file>Resources/Icons/sceneobj.png</file>
+        <file>Resources/Icons/splash.png</file>
+        <file>Resources/Icons/texture.png</file>
+        <file>Resources/Icons/tree_folder.png</file>
+        <file>Resources/Icons/undo.png</file>
+        <file>Resources/Icons/wall.png</file>
+    </qresource>
+</RCC>
