@@ -30,7 +30,6 @@
 #include "OmgEntities/OmgMapContainer.h"
 #include "OmgEntities/OmgGameContainer.h"
 #include "OmgEntities/OmgGame.h"
-#include "InputData/CharacterPartsSelectorWidget.h"
 #include "OgreWidget.h"
 
 OmegaWindow::OmegaWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::OmegaWindow)
@@ -53,6 +52,7 @@ OmegaWindow::OmegaWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::Omeg
     mTimer->setInterval(0);
     connect(mTimer, SIGNAL(timeout()), this, SLOT(timerLoop()));
     mTimer->start();
+	mCharacterSelector = 0;
 }
 void
 OmegaWindow::timerLoop()
@@ -516,10 +516,11 @@ void OmegaWindow::on_actionNewGame_triggered()
 void
 OmegaWindow::showCharacterPartsSelector( void )
 {
-  CharacterPartsSelectorWidget *pCharacterSelector =  new CharacterPartsSelectorWidget( this );
+	if(!mCharacterSelector)
+		mCharacterSelector =  new CharacterPartsSelectorWidget( this );
 
-  ui->bigScrollArea->setMaximumWidth(pCharacterSelector->size().width());
-  ui->bigScrollArea->setWidget(pCharacterSelector);
+  ui->bigScrollArea->setMaximumWidth(mCharacterSelector->size().width());
+  ui->bigScrollArea->setWidget(mCharacterSelector);
   ui->bigScrollArea->show();
 
 }
@@ -540,4 +541,10 @@ void
 OmegaWindow::hideEditScenearyWidget()
 {
   ui->entities->hide();
+}
+
+CharacterPartsSelectorWidget*
+OmegaWindow::getCharacterPartSelector()
+{
+	return mCharacterSelector;
 }

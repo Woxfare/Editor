@@ -265,8 +265,16 @@ void OgreWidget::resizeEvent(QResizeEvent* evt)
 
     mScreenResize = true;
 
-    int w = width();
+    int w = width(), h = height();
     mRenderWindow->resize(width(), height());
+
+	Ogre::Camera * camera = mSceneManager->getCamera("EditScenaryCamera");
+	if (!camera)
+		mSceneManager->getCamera("EditCubeCamera");
+	if (!camera)
+		mSceneManager->getCamera("EditCharacterCamera");
+
+	camera->setAspectRatio(static_cast<Ogre::Real>(w)/static_cast<Ogre::Real>(h));
 
     mScreenResize = false;
 }

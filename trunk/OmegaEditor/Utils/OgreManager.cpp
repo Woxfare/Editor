@@ -137,17 +137,16 @@ void OgreManager::setupResources()
 
 void OgreManager::resize(int width, int heigth, int positionX, int positionY)
 {
-    _p_ogreWindow->reposition(  positionX,
-                                positionY );
-    _p_ogreWindow->resize( width, heigth );
+    //_p_ogreWindow->reposition(  positionX,                          positionY );
+    //_p_ogreWindow->resize( width, heigth );
 
     Ogre::Camera * camera = _p_sceneManager->getCamera("EditScenaryCamera");
-    if (camera)
-        camera->setAspectRatio(static_cast<Ogre::Real>(width)/static_cast<Ogre::Real>(heigth));
+    if (!camera)
+		_p_sceneManager->getCamera("EditCubeCamera");
+	if (!camera)
+		_p_sceneManager->getCamera("EditCharacterCamera");
 
-    camera = _p_sceneManager->getCamera("EditCubeCamera");
-    if (camera)
-        camera->setAspectRatio(static_cast<Ogre::Real>(width)/static_cast<Ogre::Real>(heigth));
+    camera->setAspectRatio(static_cast<Ogre::Real>(width)/static_cast<Ogre::Real>(heigth));
 }
 
 void OgreManager::renderFrame()

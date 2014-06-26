@@ -217,6 +217,7 @@
     <ClCompile Include="Input\MouseScenaryEdit.cpp" />
     <ClCompile Include="OmegaApp.cpp" />
     <ClCompile Include="OmgEntities\OmgCharacter.cpp" />
+    <ClCompile Include="OmgEntities\OmgCube.cpp" />
     <ClCompile Include="OmgEntities\OmgEnemy.cpp" />
     <ClCompile Include="OmgEntities\OmgEnemyContainer.cpp" />
     <ClCompile Include="OmgEntities\OmgEntity.cpp" />
@@ -458,6 +459,7 @@
     <ClInclude Include="Omega.h" />
     <ClInclude Include="OmgEntities\Entities.h" />
     <ClInclude Include="OmgEntities\OmgCharacter.h" />
+    <ClInclude Include="OmgEntities\OmgCube.h" />
     <ClInclude Include="OmgEntities\OmgEnemy.h" />
     <ClInclude Include="OmgEntities\OmgEnemyContainer.h" />
     <ClInclude Include="OmgEntities\OmgEntity.h" />

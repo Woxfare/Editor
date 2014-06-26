@@ -75,7 +75,7 @@ QOmgTreeEntities::pushGames(QTreeWidgetItem *pItem)
       pLeafFolder = _mapFolders[folder_name];
     } else {
 
-      pLeafFolder = new QOmgLeaf( pItem, Omega::FolderLeaf, folder_name, QIcon(":Media/folder.png"));
+      pLeafFolder = new QOmgLeaf( pItem, Omega::FolderLeaf, folder_name, QIcon(":/OmegaEditor/Resources/Icons/folder.png"));
       _mapFolders[folder_name] = pLeafFolder;
     }
 
@@ -127,7 +127,7 @@ QOmgTreeEntities::pushMaps(QTreeWidgetItem *pItem)
 
         } else {
 
-            pLeafFolder = new QOmgLeaf( pItem, Omega::FolderLeaf, folder_name, QIcon(":Media/folder.png"));
+            pLeafFolder = new QOmgLeaf( pItem, Omega::FolderLeaf, folder_name, QIcon(":/OmegaEditor/Resources/Icons/folder.png"));
             _mapFolders[folder_name] = pLeafFolder;
 
         }
@@ -180,7 +180,7 @@ QOmgTreeEntities::pushWeapons(QTreeWidgetItem *pItem)
 
         } else {
 
-            pLeafFolder = new QOmgLeaf( pItem, Omega::FolderLeaf, folder_name,QIcon(":Media/folder.png"));
+            pLeafFolder = new QOmgLeaf( pItem, Omega::FolderLeaf, folder_name,QIcon(":/OmegaEditor/Resources/Icons/folder.png"));
             _mapFolders[folder_name] = pLeafFolder;
 
         }
@@ -238,7 +238,7 @@ QOmgTreeEntities::PushSceneObj(QTreeWidgetItem *p_item)
         } else {
 
             p_tree_folder = new QOmgLeaf(p_item, Omega::FolderLeaf,
-                                         folder_name,QIcon(":Media/folder.png"));
+                                         folder_name,QIcon(":/OmegaEditor/Resources/Icons/folder.png"));
             _map_scene_obj[folder_name] = p_tree_folder;
 
         }
@@ -292,7 +292,7 @@ QOmgTreeEntities::PushEnemies( QTreeWidgetItem *p_item )
 
             p_tree_folder = new QOmgLeaf(p_item,
                                          Omega::FolderLeaf,
-                                         folder_name,QIcon(":Media/folder.png"));
+                                         folder_name,QIcon(":/OmegaEditor/Resources/Icons/folder.png"));
             _map_scene_obj[folder_name] = p_tree_folder;
 
         }
@@ -344,7 +344,7 @@ QOmgTreeEntities::PushPlayers(QTreeWidgetItem *p_item)
 
         } else {
 
-            p_tree_folder = new QOmgLeaf(p_item, Omega::FolderLeaf,folder_name,QIcon(":Media/folder.png"));
+            p_tree_folder = new QOmgLeaf(p_item, Omega::FolderLeaf,folder_name,QIcon(":/OmegaEditor/Resources/Icons/folder.png"));
             _map_scene_obj[folder_name] = p_tree_folder;
 
         }
@@ -393,7 +393,7 @@ QOmgTreeEntities::PushItems(QTreeWidgetItem *p_item)
 
         } else {
 
-            p_tree_folder = new QOmgLeaf(p_item, Omega::FolderLeaf,folder_name,QIcon(":Media/folder.png"));
+            p_tree_folder = new QOmgLeaf(p_item, Omega::FolderLeaf,folder_name,QIcon(":/OmegaEditor/Resources/Icons/folder.png"));
             _map_scene_obj[folder_name] = p_tree_folder;
 
         }

@@ -1,6 +1,8 @@
 #include "MouseCharacterEdit.h"
 #include <QDebug>
 #include <QFileDialog>
+#include "InputData\QOmgWindowMngr.h"
+#include "editionmanagers\editcharactermanager.h"
 
 MouseCharacterEdit::MouseCharacterEdit() : MouseController()
 {
@@ -147,7 +149,6 @@ MouseCharacterEdit::changeTextureOfFace(Ogre::ManualObject *selectedFace, QWidge
     try{
         if(!Ogre::TextureManager::getSingleton().resourceExists(name.toStdString()))
         {
-            qDebug() << "No existe";
             QPixmap image;
             image.load(absFilename);
 
@@ -159,6 +160,21 @@ MouseCharacterEdit::changeTextureOfFace(Ogre::ManualObject *selectedFace, QWidge
         }
         selectedFace->getSection(0)->getMaterial()->getTechnique(0)->getPass(0)->removeAllTextureUnitStates();
         selectedFace->getSection(0)->getMaterial()->getTechnique(0)->getPass(0)->createTextureUnitState(name.toStdString());
+		if(QString( selectedFace->getName().c_str() ).contains("Front"))
+		{
+			if(QString( selectedFace->getName().c_str() ).contains("Head"))
+				QOmgWindowMngr::Instance()->GetMainWindow()->getCharacterPartSelector()->changeTextureOfPart(head, name);
+			else if(QString( selectedFace->getName().c_str() ).contains("Body"))
+				QOmgWindowMngr::Instance()->GetMainWindow()->getCharacterPartSelector()->changeTextureOfPart(body, name);
+			else if(QString( selectedFace->getName().c_str() ).contains("ArmL"))
+				QOmgWindowMngr::Instance()->GetMainWindow()->getCharacterPartSelector()->changeTextureOfPart(armLeft, name);
+			else if(QString( selectedFace->getName().c_str() ).contains("ArmR"))
+				QOmgWindowMngr::Instance()->GetMainWindow()->getCharacterPartSelector()->changeTextureOfPart(armRight, name);
+			else if(QString( selectedFace->getName().c_str() ).contains("LegL"))
+				QOmgWindowMngr::Instance()->GetMainWindow()->getCharacterPartSelector()->changeTextureOfPart(legLeft, name);
+			else if(QString( selectedFace->getName().c_str() ).contains("LegR"))
+				QOmgWindowMngr::Instance()->GetMainWindow()->getCharacterPartSelector()->changeTextureOfPart(legRight, name);
+		}
 
     } catch( Ogre::Exception e )
     {
