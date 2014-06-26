@@ -314,6 +314,9 @@
     <ClCompile Include="Saver\OmgSaverMngr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="OmgEntities\OmgCube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="OmegaEditor.qrc">
@@ -586,6 +589,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Omega.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OmgEntities\OmgCube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

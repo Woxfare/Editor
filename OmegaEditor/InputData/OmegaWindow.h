@@ -36,6 +36,7 @@
 #include <QTreeWidgetItem>
 #include "./Folders/OmgFolder.h"
 #include "InputData/QOmgDragableEntities.h"
+#include "InputData/CharacterPartsSelectorWidget.h"
 
 class OgreWidget;
 
@@ -83,6 +84,8 @@ public:
 
     void hideEditScenearyWidget( void );
     
+	CharacterPartsSelectorWidget* getCharacterPartSelector();
+
 public Q_SLOTS:
 
     /*!
@@ -231,6 +234,8 @@ private:
     OgreWidget* mOgreWidget;
 
     QTimer                          *mTimer;
+
+	CharacterPartsSelectorWidget*   mCharacterSelector;
 };
 
 #endif // OMEGAWINDOW_H

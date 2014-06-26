@@ -66,6 +66,12 @@
          <property name="text">
           <string/>
          </property>
+         <property name="iconSize">
+          <size>
+           <width>200</width>
+           <height>200</height>
+          </size>
+         </property>
         </widget>
        </item>
        <item>
@@ -84,6 +90,12 @@
          </property>
          <property name="text">
           <string/>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>200</width>
+           <height>200</height>
+          </size>
          </property>
         </widget>
        </item>
@@ -106,6 +118,12 @@
        <property name="text">
         <string/>
        </property>
+       <property name="iconSize">
+        <size>
+         <width>200</width>
+         <height>100</height>
+        </size>
+       </property>
       </widget>
      </item>
      <item row="1" column="0">
@@ -126,6 +144,12 @@
          </property>
          <property name="text">
           <string/>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>200</width>
+           <height>200</height>
+          </size>
          </property>
         </widget>
        </item>
@@ -162,6 +186,12 @@
          </property>
          <property name="text">
           <string/>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>200</width>
+           <height>200</height>
+          </size>
          </property>
         </widget>
        </item>
@@ -202,6 +232,12 @@
          <property name="text">
           <string/>
          </property>
+         <property name="iconSize">
+          <size>
+           <width>200</width>
+           <height>200</height>
+          </size>
+         </property>
         </widget>
        </item>
        <item>
@@ -235,13 +271,7 @@
     </spacer>
    </item>
   </layout>
-  <zorder>leftArm</zorder>
-  <zorder>rightArm</zorder>
-  <zorder>verticalSpacer_3</zorder>
   <zorder>verticalSpacer_4</zorder>
-  <zorder>body</zorder>
-  <zorder>body</zorder>
-  <zorder>body</zorder>
   <zorder>verticalSpacer_5</zorder>
  </widget>
  <resources/>

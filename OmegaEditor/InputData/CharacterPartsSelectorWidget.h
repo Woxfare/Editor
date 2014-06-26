@@ -33,6 +33,7 @@
 #define CHARACTERPARTSSELECTORWIDGET_H
 
 #include <QWidget>
+#include "EditionManagers/EditCharacterManager.h"
 
 namespace Ui {
 class CharacterPartsSelectorWidget;
@@ -45,6 +46,7 @@ class CharacterPartsSelectorWidget : public QWidget
 public:
     explicit CharacterPartsSelectorWidget(QWidget *parent = 0);
     ~CharacterPartsSelectorWidget();
+	void changeTextureOfPart( characterParts part, QString textureName );
 
 private slots:
     void on_head_clicked();
@@ -75,6 +77,7 @@ private:
 
     void ShowSelectedParts( void );
 
+	std::map< characterParts, QIcon > _map_icons_parts;
 
 };
 
