@@ -7,11 +7,9 @@
 #include "Utils/CubeUtils.h"
 #include <QXmlStreamWriter>
 
-OmgSceneObj::OmgSceneObj(QString a_name, std::map<std::string, std::string> a_textures, int rgb[3]) : OmgCube ( a_name, a_textures, rgb )
+OmgSceneObj::OmgSceneObj(QString &a_name, const QString &folderName, std::map<std::string, std::string> a_textures, int rgb[3]) : OmgCube( a_name, folderName, a_textures, rgb )
 {
     setType(Omega::SceneObj);
-    _folder = QString("DefaultObjects" );
-
     CubeUtils::createCubeMesh(a_name.toStdString(), a_textures, rgb);
     OgreManager::getInstance()->createEntity0(a_name.toStdString());
     createCustomPixmap();

@@ -7,7 +7,7 @@
 
 EntitiesXMLWriter::EntitiesXMLWriter( const std::vector< OmgEntity* >& arv_entities, const QString a_fileName )
 {
-  if( a_fileName == "" )
+  if( a_fileName == "" || arv_entities.empty() )
     return;
 
   QFile file(a_fileName);

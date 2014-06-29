@@ -1,21 +1,15 @@
 #include "OmgItem.h"
 #include <QDebug>
 #include <QXmlStreamWriter>
-#include "OmgEntities/OmgWeapon.h"
 
-OmgItem::OmgItem(QString aName, std::map<std::string, std::string> aTextures, int rgb[3]) : OmgCube ( aName, aTextures, rgb )
+OmgItem::OmgItem(const QString &aName, const QString &folderName, std::map<std::string, std::string> aTextures, int avRgb[3])  : OmgCube ( aName, folderName, aTextures, avRgb ),
+      weaponName( QString("")), quantity( 0 )
 {
     setType(Omega::Item);
-    _folder = "DefaultItems";
-    weapon = NULL;
-    quantity = 0;
-	createCustomPixmap();
+	  createCustomPixmap();
 }
 
-OmgItem::~OmgItem()
-{
-  delete weapon;
-}
+OmgItem::~OmgItem(){}
 
 void
 OmgItem::setItemType(Omega::ItemType aType)
@@ -53,7 +47,7 @@ OmgItem::writeInfo( QXmlStreamWriter *a_xml_stream )
   a_xml_stream->writeAttribute("value", itemTypeStr() );
   a_xml_stream->writeAttribute("quantity", QString("%1").arg( getQuantity() ) );
   if( _itemType == Omega::Ammo )
-	a_xml_stream->writeAttribute("weapon", weapon->getName() );
+	  a_xml_stream->writeAttribute("weapon", weaponName );
   a_xml_stream->writeEndElement(); // type
 
   a_xml_stream->writeStartElement("textures");
@@ -66,15 +60,15 @@ OmgItem::writeInfo( QXmlStreamWriter *a_xml_stream )
 }
 
 void
-OmgItem::setWeapon( OmgWeapon* a_weapon )
+OmgItem::setWeapon( QString a_weapon )
 {
-  weapon = a_weapon;
+  weaponName = a_weapon;
 }
 
-OmgWeapon*
+QString
 OmgItem::getWeapon( void )
 {
-  return weapon;
+  return weaponName;
 }
 
 int

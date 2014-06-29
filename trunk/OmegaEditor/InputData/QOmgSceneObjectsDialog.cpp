@@ -228,26 +228,17 @@ void QOmgSceneObjectsDialog::on__cancel_clicked()
 OmgSceneObj*
 QOmgSceneObjectsDialog::createSceneObject( void )
 {
-    qDebug() << "New Scene Object Created:";
-
     QColorButton *colorButton = dynamic_cast<QColorButton*>( ui->widget );
     QColor color = colorButton->getSelectedColor();
     int rgb[3] = {color.red(), color.green(), color.blue()};
-    OmgSceneObj * newObject = new OmgSceneObj( ui->_name->text(), EditCubeManager::getInstance()->getEditCube(), rgb);
-
-    qDebug() << "Color:" << newObject->getColor().red() << newObject->getColor().green() << newObject->getColor().blue();
+    OmgSceneObj * newObject = new OmgSceneObj( ui->_name->text(), ui->folderList->currentItem()->text(), EditCubeManager::getInstance()->getEditCube(), rgb);
 
     if(ui->cbType->currentText().contains("Dynamic",Qt::CaseSensitive))
     {
         newObject->setObjectType( Omega::Dynamic );
-        qDebug() << "Dynamic";
     } else {
         newObject->setObjectType( Omega::Static );
-        qDebug() << "Static";
     }
-
-    newObject->setFolderName(ui->folderList->currentItem()->text());
-    qDebug() << "Inside the folder: " << newObject->getFolderName();
 
     return newObject;
 }

@@ -1,7 +1,7 @@
 /*
-				 ___  __  __ ______  ____  ___
-				/ _ \|  \/  |  ____|/ ___|/ _ \
-	 		   | | | |      | |__  | |   | | | |
+				         ___  __  __ ______  ____  ___
+				        / _ \|  \/  |  ____|/ ___|/ _ \
+	 		         | | | |      | |__  | |   | | | |
                | | | | |\/| |  __| | |  _| |_| |
                | |_| | |  | | |____| |_| |  _  |
                 \___/|_|  |_|______|\____|_| |_|
@@ -48,6 +48,7 @@ public:
     virtual void wheelMoved(int delta)=0;
     virtual void doubleClickEvent(int x, int y, int width, int height, QWidget * widget)=0;
     virtual void rotateCam(Ogre::Real dx, Ogre::Real dy, Ogre::Camera *cam );
+    virtual void fitControllerCamera( void );
 
 protected:
     Qt::MouseButton          _lastPressed;

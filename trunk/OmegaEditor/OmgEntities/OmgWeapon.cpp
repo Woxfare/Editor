@@ -2,14 +2,10 @@
 #include <QDebug>
 #include <QXmlStreamWriter>
 
-OmgWeapon::OmgWeapon(QString a_name, QString a_folderName) : OmgEntity( a_name )
+OmgWeapon::OmgWeapon(QString a_name, QString a_folderName) : OmgEntity( a_name, a_folderName ), _weaponType( Omega::SimpleShot ), _nBullets( 0 ), _damage( 0 )
 {
     setPixmap(QPixmap(":/OmegaEditor/Resources/Icons/gun.png"));
     setType(Omega::Weapon);
-    setWeaponType(Omega::SimpleShot);
-    setFolderName(a_folderName);
-    _nBullets = 0;
-	_damage = 0;
 }
 
 void

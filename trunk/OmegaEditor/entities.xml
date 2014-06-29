@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<omega>
+    <weapon name="dddd" folder="DefaultWeapons">
+        <color r="85" g="85" b="0"/>
+        <type value="BlastShot"/>
+        <features bullets="15" damage="30"/>
+    </weapon>
+    <sceneobject name="ObjectNametttt" folder="DefaultObjects">
+        <color r="255" g="255" b="255"/>
+        <type value="Static"/>
+        <textures Back="8640003215_8071ace2f6_o.png" Bottom="8640003215_8071ace2f6_o.png" Front="1045742-xs.png" Left="face.png" Right="8640003215_8071ace2f6_o.png" Top="1045742-xs.png"/>
+    </sceneobject>
+    <sceneobject name="Wood" folder="DefaultObjects">
+        <color r="255" g="255" b="255"/>
+        <type value="Static"/>
+        <textures Back="8640003215_8071ace2f6_o.png" Bottom="8640003215_8071ace2f6_o.png" Front="8640003215_8071ace2f6_o.png" Left="8640003215_8071ace2f6_o.png" Right="8640003215_8071ace2f6_o.png" Top="8640003215_8071ace2f6_o.png"/>
+    </sceneobject>
+</omega>

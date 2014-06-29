@@ -164,13 +164,13 @@ QOmgMapDialog::on_pbClear_clicked( void )
 void
 QOmgMapDialog::on_pbLoad_clicked()
 {
-  EditSceneManager::getInstance()->setEditScenary( _map->getSceneObjectsInTheMap());
-
   if( _map )
   {
     EditSceneManager::getInstance()->setEditScenary( _map->getSceneObjectsInTheMap());
-	EditSceneManager::getInstance()->changeBasePlaneTexture( _map->getTerrainTextureName().toStdString() );
+    EditSceneManager::getInstance()->setEditScenary( _map->getSceneObjectsInTheMap());
+    terrainTextureName = _map->getTerrainTextureName();
+	  EditSceneManager::getInstance()->changeBasePlaneTexture( terrainTextureName.toStdString() );
     EditSceneManager::getInstance()->setEnemyDoors( _map->getEnemyDoors() );
-	EditSceneManager::getInstance()->addDoorToScene( _map->getPlayerDoor(), true );
+	  EditSceneManager::getInstance()->addDoorToScene( _map->getPlayerDoor(), true );
   }
 }

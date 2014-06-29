@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<omega>
+    <sceneobject name="DarkMetal" folder="DefaultObjects">
+        <color r="255" g="255" b="255"/>
+        <type value="Static"/>
+        <textures Back="metal_box_texture.png" Bottom="metal_box_texture.png" Front="metal_box_texture.png" Left="metal_box_texture.png" Right="metal_box_texture.png" Top="metal_box_texture.png"/>
+    </sceneobject>
+    <sceneobject name="Hierva" folder="DefaultObjects">
+        <color r="255" g="255" b="255"/>
+        <type value="Static"/>
+        <textures Back="terrain_top.png" Bottom="terrain_top.png" Front="terrain_top.png" Left="terrain_top.png" Right="terrain_top.png" Top="terrain_top.png"/>
+    </sceneobject>
+    <sceneobject name="Hierva2" folder="DefaultObjects">
+        <color r="255" g="255" b="255"/>
+        <type value="Static"/>
+        <textures Back="terrain_front.png" Bottom="terrain_bottom.png" Front="terrain_left.png" Left="terrain_right.png" Right="terrain_right.png" Top="grass_1024.png"/>
+    </sceneobject>
+    <sceneobject name="Madera" folder="DefaultObjects">
+        <color r="255" g="255" b="255"/>
+        <type value="Static"/>
+        <textures Back="8640003215_8071ace2f6_o.png" Bottom="8640003215_8071ace2f6_o.png" Front="8640003215_8071ace2f6_o.png" Left="8640003215_8071ace2f6_o.png" Right="8640003215_8071ace2f6_o.png" Top="8640003215_8071ace2f6_o.png"/>
+    </sceneobject>
+    <sceneobject name="Metal" folder="DefaultObjects">
+        <color r="255" g="255" b="255"/>
+        <type value="Static"/>
+        <textures Back="1045742-xs.png" Bottom="1045742-xs.png" Front="1045742-xs.png" Left="1045742-xs.png" Right="1045742-xs.png" Top="1045742-xs.png"/>
+    </sceneobject>
+    <sceneobject name="Metal2" folder="DefaultObjects">
+        <color r="255" g="255" b="255"/>
+        <type value="Static"/>
+        <textures Back="metal.png" Bottom="metal.png" Front="metal.png" Left="metal.png" Right="metal.png" Top="metal.png"/>
+    </sceneobject>
+    <sceneobject name="TNT" folder="DefaultObjects">
+        <color r="255" g="255" b="255"/>
+        <type value="Static"/>
+        <textures Back="tnt.png" Bottom="tnt.png" Front="tnt.png" Left="tnt.png" Right="tnt.png" Top="tn2.png"/>
+    </sceneobject>
+    <sceneobject name="Toxos" folder="DefaultObjects">
+        <color r="255" g="255" b="255"/>
+        <type value="Static"/>
+        <textures Back="images (1).png" Bottom="images (1).png" Front="images (1).png" Left="images (1).png" Right="images (1).png" Top="images (1).png"/>
+    </sceneobject>
+    <sceneobject name="TreeLeaf" folder="DefaultObjects">
+        <color r="255" g="255" b="255"/>
+        <type value="Static"/>
+        <textures Back="bright_green_moss_texture_stock_by_jojo22-d6t1u7d.png" Bottom="bright_green_moss_texture_stock_by_jojo22-d6t1u7d.png" Front="bright_green_moss_texture_stock_by_jojo22-d6t1u7d.png" Left="bright_green_moss_texture_stock_by_jojo22-d6t1u7d.png" Right="bright_green_moss_texture_stock_by_jojo22-d6t1u7d.png" Top="bright_green_moss_texture_stock_by_jojo22-d6t1u7d.png"/>
+    </sceneobject>
+    <sceneobject name="Wood" folder="DefaultObjects">
+        <color r="255" g="255" b="255"/>
+        <type value="Static"/>
+        <textures Back="images.png" Bottom="images.png" Front="images.png" Left="images.png" Right="images.png" Top="images.png"/>
+    </sceneobject>
+    <sceneobject name="blue" folder="DefaultObjects">
+        <color r="0" g="85" b="127"/>
+        <type value="Static"/>
+        <textures Back="" Bottom="" Front="" Left="" Right="" Top=""/>
+    </sceneobject>
+</omega>

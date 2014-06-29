@@ -241,7 +241,7 @@ private:
 	 /*
      * \brief Gets a 
      */
-    std::set< OmgWeapon* > getWeaponsSet( );
+    std::set< QString > getWeaponsSet( );
 
     /*
      * \brief Creates the pixmaps set

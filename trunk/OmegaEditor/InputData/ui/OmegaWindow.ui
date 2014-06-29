@@ -14,7 +14,7 @@
    <string>Omega Editor</string>
   </property>
   <property name="windowIcon">
-   <iconset>
+   <iconset resource="../../OmegaEditor.qrc">
     <normaloff>:/OmegaEditor/Resources/Icons/omega.png</normaloff>:/OmegaEditor/Resources/Icons/omega.png</iconset>
   </property>
   <property name="styleSheet">
@@ -222,7 +222,7 @@ QLabel{border:1px soid white;}
           <string>Tree Entities</string>
          </property>
          <property name="icon">
-          <iconset>
+          <iconset resource="../../OmegaEditor.qrc">
            <normaloff>:/OmegaEditor/Resources/Icons/tree_folder.png</normaloff>:/OmegaEditor/Resources/Icons/tree_folder.png</iconset>
          </property>
         </widget>
@@ -250,6 +250,7 @@ QLabel{border:1px soid white;}
    </attribute>
    <addaction name="actionOmega"/>
    <addaction name="actionSave"/>
+   <addaction name="actionFit"/>
    <addaction name="actionExit"/>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -416,6 +417,15 @@ QLabel{border:1px soid white;}
    </property>
    <property name="text">
     <string>New Game</string>
+   </property>
+  </action>
+  <action name="actionFit">
+   <property name="icon">
+    <iconset resource="../../OmegaEditor.qrc">
+     <normaloff>:/OmegaEditor/Resources/Icons/fit.png</normaloff>:/OmegaEditor/Resources/Icons/fit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Fit</string>
    </property>
   </action>
  </widget>

@@ -1,7 +1,7 @@
 /*
-				 ___  __  __ ______  ____  ___
-				/ _ \|  \/  |  ____|/ ___|/ _ \
-	 		   | | | |      | |__  | |   | | | |
+				         ___  __  __ ______  ____  ___
+				        / _ \|  \/  |  ____|/ ___|/ _ \
+	 		         | | | |      | |__  | |   | | | |
                | | | | |\/| |  __| | |  _| |_| |
                | |_| | |  | | |____| |_| |  _  |
                 \___/|_|  |_|______|\____|_| |_|
@@ -44,6 +44,7 @@ public:
     virtual void buttonReleased(int x, int y, int width, int height);
     virtual void wheelMoved(int delta);
     virtual void doubleClickEvent(int x, int y, int width, int height, QWidget * widget);
+    virtual void fitControllerCamera(void);
 
 protected:
 

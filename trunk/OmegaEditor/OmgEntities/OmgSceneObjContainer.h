@@ -1,7 +1,7 @@
 /*
-				 ___  __  __ ______  ____  ___
-				/ _ \|  \/  |  ____|/ ___|/ _ \
-	 		   | | | |      | |__  | |   | | | |
+				        ___  __  __ ______  ____  ___
+				       / _ \|  \/  |  ____|/ ___|/ _ \
+	 		         | | | |      | |__  | |   | | | |
                | | | | |\/| |  __| | |  _| |_| |
                | |_| | |  | | |____| |_| |  _  |
                 \___/|_|  |_|______|\____|_| |_|
@@ -83,12 +83,6 @@ public:
      * \return
      */
     Omega::EntityVector sceneObjInFolder( QString aFolderName );
-
-    /*!
-     * \brief buildSceneObj
-     * \param aSceneObjParams
-     */
-    void buildSceneObj( QStringList aSceneObjParams );
 
 protected:
 

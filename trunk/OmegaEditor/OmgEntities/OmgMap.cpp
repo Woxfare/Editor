@@ -6,7 +6,7 @@
 
 #include <qDebug>
 
-OmgMap::OmgMap(QString aName, QString aFolderName ) : OmgEntity(aName)
+OmgMap::OmgMap(QString aName, QString aFolderName ) : OmgEntity(aName, aFolderName )
 {
     setFolderName(aFolderName);
     setType(Omega::Map);
@@ -78,6 +78,25 @@ OmgMap::writeInfo( QXmlStreamWriter *a_xml_stream )
   {
 	  a_xml_stream->writeStartElement("material");
 	  a_xml_stream->writeAttribute( "name", _materialsToExport[i].c_str());
+    QString tex(_materialsToExport[i].c_str());
+    int lastIndex = tex.lastIndexOf('_');
+
+    QString b = tex.mid(lastIndex+1, tex.length());
+    tex = tex.left(lastIndex);
+
+    lastIndex = tex.lastIndexOf('_');
+    QString g = tex.mid(lastIndex+1, tex.length());
+    tex = tex.left(lastIndex);
+
+    lastIndex = tex.lastIndexOf('_');
+    QString r = tex.mid(lastIndex+1, tex.length());
+    tex = tex.left(lastIndex);
+
+    a_xml_stream->writeAttribute( "texture", tex);
+    a_xml_stream->writeAttribute( "r", r);
+    a_xml_stream->writeAttribute( "g", g);
+    a_xml_stream->writeAttribute( "b", b);
+    
 	  a_xml_stream->writeEndElement();
   }
   a_xml_stream->writeEndElement();

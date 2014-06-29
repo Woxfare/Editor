@@ -1,7 +1,7 @@
 /*
-				 ___  __  __ ______  ____  ___
-				/ _ \|  \/  |  ____|/ ___|/ _ \
-	 		   | | | |      | |__  | |   | | | |
+				         ___  __  __ ______  ____  ___
+				        / _ \|  \/  |  ____|/ ___|/ _ \
+	 		         | | | |      | |__  | |   | | | |
                | | | | |\/| |  __| | |  _| |_| |
                | |_| | |  | | |____| |_| |  _  |
                 \___/|_|  |_|______|\____|_| |_|
@@ -43,8 +43,9 @@ public:
     virtual void moved(int x, int y, int width, int height);
     virtual void buttonReleased(int x, int y, int width, int height);
     virtual void wheelMoved(int delta);
-	virtual void doubleClickEvent(int x, int y, int width, int height, QWidget * widget);
-	std::string  selectCharacterFace(Ogre::Vector3 colisionPoint);
+	  virtual void doubleClickEvent(int x, int y, int width, int height, QWidget * widget);
+	  std::string  selectCharacterFace(Ogre::Vector3 colisionPoint);
+    virtual void fitControllerCamera(void);
 
 protected:
 

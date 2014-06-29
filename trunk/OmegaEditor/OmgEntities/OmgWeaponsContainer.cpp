@@ -4,19 +4,9 @@
 #include <QDebug>
 
 OmgWeaponsContainer* OmgWeaponsContainer::_p_instance = NULL;
-
-OmgWeaponsContainer::OmgWeaponsContainer()
-{
-}
-
+OmgWeaponsContainer::OmgWeaponsContainer(){}
 OmgWeaponsContainer*
-OmgWeaponsContainer::Instance( void )
-{
-    if(!_p_instance)
-        _p_instance = new OmgWeaponsContainer();
-
-    return _p_instance;
-}
+OmgWeaponsContainer::Instance( void ) { return ( _p_instance ) ? _p_instance : _p_instance = new OmgWeaponsContainer; }
 
 OmgWeapon*
 OmgWeaponsContainer::getWeapon(QString aName)

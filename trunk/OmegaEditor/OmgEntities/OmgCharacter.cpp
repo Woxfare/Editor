@@ -1,7 +1,7 @@
 /*
-				 ___  __  __ ______  ____  ___
-				/ _ \|  \/  |  ____|/ ___|/ _ \
-	 		   | | | |      | |__  | |   | | | |
+				         ___  __  __ ______  ____  ___
+				        / _ \|  \/  |  ____|/ ___|/ _ \
+	 		         | | | |      | |__  | |   | | | |
                | | | | |\/| |  __| | |  _| |_| |
                | |_| | |  | | |____| |_| |  _  |
                 \___/|_|  |_|______|\____|_| |_|
@@ -39,13 +39,7 @@
 #include <QXmlStreamWriter>
 #include "OmgEntities/OmgWeapon.h"
 
-OmgCharacter::OmgCharacter(QString aName, QString aFolderName) : OmgEntity( aName )
-{
-    _folder = aFolderName;
-    _totalLife = 0;
-    _points = 0;
-    createCustomPixmap();
-}
+OmgCharacter::OmgCharacter(QString aName, QString aFolderName) : OmgEntity( aName, aFolderName), _totalLife( 0 ), _points( 0 ){}
 
 int
 OmgCharacter::getTotalLife( void )
@@ -107,7 +101,7 @@ OmgCharacter::createCustomPixmap( void )
     }
 
     QPixmap image = QPixmap( );
-    image.load( "mediaOgre/materials/textures/" + textureName );
+    image.load( "Resources/materials/textures/" + textureName );
     image = image.scaled( QSize( 128, 128 ), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
     setPixmap(image);
 }

@@ -91,6 +91,11 @@ public Q_SLOTS:
     /*!
      * \brief on_actionNew_Player_triggered
      */
+    void on_actionFit_triggered();
+
+    /*!
+     * \brief on_actionNew_Player_triggered
+     */
     void on_actionNew_Player_triggered();
 
     /*!

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<omega>
+    <player name="Homer" folder="DefaultPlayers">
+        <color r="255" g="255" b="255"/>
+        <life value="1000"/>
+        <weapons number="1">
+            <weapon name="dddd"/>
+        </weapons>
+        <textures>
+            <Head Back="homerheadback.png" Bottom="yellow.png" Front="homerface.png" Left="homerearright.png" Right="homerearleft.png" Top="homerheadtop.png"/>
+            <Body Back="homertee.png" Bottom="blue.png" Front="homerteefront.png" Left="homertee.png" Right="homertee.png" Top="yellow.png"/>
+            <ArmL Back="homerarm.png" Bottom="yellow.png" Front="homerarm.png" Left="homerarm.png" Right="homerarm.png" Top=""/>
+            <ArmR Back="homerarm.png" Bottom="yellow.png" Front="homerarm.png" Left="homerarm.png" Right="homerarm.png" Top=""/>
+            <LegL Back="homerleg.png" Bottom="black.png" Front="homerleg.png" Left="homerleg.png" Right="homerleg.png" Top="blue.png"/>
+            <LegR Back="homerleg.png" Bottom="black.png" Front="homerleg.png" Left="homerleg.png" Right="homerleg.png" Top="blue.png"/>
+        </textures>
+    </player>
+    <player name="kane" folder="DefaultPlayers">
+        <color r="255" g="255" b="255"/>
+        <life value="500"/>
+        <weapons number="1">
+            <weapon name="dddd"/>
+        </weapons>
+        <textures>
+            <Head Back="back.png" Bottom="bott.png" Front="face.png" Left="right.png" Right="left.png" Top="back.png"/>
+            <Body Back="" Bottom="" Front="tee.png" Left="" Right="" Top=""/>
+            <ArmL Back="lef1.png" Bottom="lef1.png" Front="lef1.png" Left="lef1.png" Right="lef1.png" Top="lef1.png"/>
+            <ArmR Back="lef1.png" Bottom="lef1.png" Front="lef1.png" Left="lef1.png" Right="lef1.png" Top="lef1.png"/>
+            <LegL Back="" Bottom="" Front="" Left="" Right="" Top=""/>
+            <LegR Back="" Bottom="" Front="" Left="" Right="" Top=""/>
+        </textures>
+    </player>
+</omega>

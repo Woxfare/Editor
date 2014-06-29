@@ -152,7 +152,7 @@ MouseCharacterEdit::changeTextureOfFace(Ogre::ManualObject *selectedFace, QWidge
             QPixmap image;
             image.load(absFilename);
 
-            QFile file("./mediaOgre/materials/textures/" + name);
+            QFile file("./Resources/materials/textures/" + name);
             file.open(QIODevice::WriteOnly);
             image.save(&file, "PNG");
 
@@ -178,8 +178,6 @@ MouseCharacterEdit::changeTextureOfFace(Ogre::ManualObject *selectedFace, QWidge
 
     } catch( Ogre::Exception e )
     {
-        qDebug() << "Recovered";
-
         //! Cuando llega aqui es porque ha habido un error al cargar el archivo, pero ahora el archivo esta en mediaOgre copiado y correcto para poder mapearlo en
         //! la box, asi que volvemos a intentar poner la imagen.
         selectedFace->getSection(0)->getMaterial()->getTechnique(0)->getPass(0)->removeAllTextureUnitStates();
@@ -190,16 +188,34 @@ MouseCharacterEdit::changeTextureOfFace(Ogre::ManualObject *selectedFace, QWidge
 void
 MouseCharacterEdit::initControlerCamera( void )
 {
-    _editCharacterCamera = OgreManager::getInstance()->getSceneManager()->getCamera("EditCharacterCamera");
-    Ogre::Real radius = 20;
-    _editCharacterCamera->setPosition(0.0,0.0,0.0);
-    _editCharacterCamera->setOrientation(Ogre::Quaternion::IDENTITY);
-    _yawValue = Ogre::Degree(40);
-    _lastYawValue = _yawValue;
-    _editCharacterCamera->yaw(_yawValue );
-    _pitchValue = Ogre::Degree(30);
-    _editCharacterCamera->pitch( _pitchValue );
-    _lastPitchValue = _pitchValue;
-    _editCharacterCamera->moveRelative(Ogre::Vector3(0.0,0.0,radius));
-    _editCharacterCamera->lookAt(0,0,0);
+  _editCharacterCamera = OgreManager::getInstance()->getSceneManager()->getCamera("EditCharacterCamera");
+  Ogre::Real radius = 20;
+  _editCharacterCamera->setPosition(0.0,0.0,0.0);
+  _editCharacterCamera->setOrientation(Ogre::Quaternion::IDENTITY);
+  _yawValue = Ogre::Degree(40);
+  _lastYawValue = _yawValue;
+  _editCharacterCamera->yaw(_yawValue );
+  _pitchValue = Ogre::Degree(30);
+  _editCharacterCamera->pitch( _pitchValue );
+  _lastPitchValue = _pitchValue;
+  _editCharacterCamera->moveRelative(Ogre::Vector3(0.0,0.0,radius));
+  _editCharacterCamera->lookAt(0,0,0);
+}
+
+void
+MouseCharacterEdit::fitControllerCamera( void )
+{
+  _editCharacterCamera = OgreManager::getInstance()->getSceneManager()->getCamera("EditCharacterCamera");
+  Ogre::Real radius = 20;
+  _editCharacterCamera->setPosition(0.0,0.0,0.0);
+  _editCharacterCamera->setOrientation(Ogre::Quaternion::IDENTITY);
+  _yawValue = Ogre::Degree(40);
+  _lastYawValue = _yawValue;
+  _editCharacterCamera->yaw(_yawValue );
+  _pitchValue = Ogre::Degree(30);
+  _editCharacterCamera->pitch( _pitchValue );
+  _lastPitchValue = _pitchValue;
+  _editCharacterCamera->moveRelative(Ogre::Vector3(0.0,0.0,radius));
+  _editCharacterCamera->lookAt(0,0,0);
+  rotateCam(0,0,_editCharacterCamera);
 }

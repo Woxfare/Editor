@@ -162,13 +162,11 @@ QOmgDialogPlayer::createPlayer( void )
 
   pPlayer->setTotalLife( ui->_life->value() );
 
-  QList<QListWidgetItem*> listItems = ui->weaponList->selectedItems();
-  Omega::EntityVector vItems;
-  for(QList<QListWidgetItem*>::Iterator it = listItems.begin(); it != listItems.end(); ++it )
-	  vItems.push_back( OmgWeaponsContainer::Instance()->getWeapon((*it)->text()));
-  pPlayer->setWeapons(vItems);
-
-  pPlayer->setWeapon( OmgWeaponsContainer::Instance()->getWeapon( ui->weaponList->currentItem()->text() ));
+  QList<QListWidgetItem*> weaponsQList = ui->weaponList->selectedItems();
+  std::vector<QString> vWeapons;
+  for(QList<QListWidgetItem*>::Iterator it = weaponsQList.begin(); it != weaponsQList.end(); ++it )
+	  vWeapons.push_back( QString(( *it)->text()) );
+  pPlayer->setWeapons(vWeapons);
 
   return pPlayer;
 }
