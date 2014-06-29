@@ -41,5 +41,6 @@
         <file>Resources/Icons/tree_folder.png</file>
         <file>Resources/Icons/undo.png</file>
         <file>Resources/Icons/wall.png</file>
+        <file>Resources/Icons/fit.png</file>
     </qresource>
 </RCC>

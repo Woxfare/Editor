@@ -10,10 +10,10 @@
 #include "OmgEntities/OmgItem.h"
 #include "OmgEntities/OmgSceneObjContainer.h"
 #include "OmgEntities/OmgWeapon.h"
+#include "OmgWeaponsContainer.h"
 
-OmgGame::OmgGame(QString aName, QString aFolderName ) : OmgEntity(aName)
+OmgGame::OmgGame(QString aName, QString aFolderName ) : OmgEntity(aName, aFolderName )
 {
-    setFolderName(aFolderName);
     setType(Omega::Game);
 }
 
@@ -276,12 +276,15 @@ OmgGame::getPixmapSet( )
   return setPixmaps;
 }
 
-std::set< OmgWeapon* >
+std::set< QString >
 OmgGame::getWeaponsSet()
 {
-	std::set< OmgWeapon* > setWeapons;
+	std::set< QString > setWeapons;
+  std::vector<QString> playerWeapons = _player->getWeapons();
+  for( int i = 0; i < playerWeapons.size(); ++i )
+    setWeapons.insert( playerWeapons[i]);
 
-	setWeapons.insert( _player->getWeapon() );
+	
 
 	Omega::EntityVector vEnemies = getAvailableEnemies();
 	int nEnemies = vEnemies.size();
@@ -291,7 +294,9 @@ OmgGame::getWeaponsSet()
 		OmgEnemy *enemy = dynamic_cast<OmgEnemy*>(vEnemies[i]);
 		if(!enemy)
 			continue;
-		setWeapons.insert( enemy->getWeapon() );
+    if(!enemy->getWeapon())
+      continue;
+		setWeapons.insert( enemy->getWeapon()->getName() );
 	}
 
 	Omega::EntityVector vItems = getAvailableItems();
@@ -320,7 +325,7 @@ OmgGame::savePixmaps( std::set< std::string > pixmapSet, QString path )
   for( ; it_pix != it_pix_end ; ++it_pix )
   {
     std::string currentName = *it_pix;
-    QString pixmapName = "./mediaOgre/materials/textures/" + QString().fromStdString( currentName );
+    QString pixmapName = "./Resources/materials/textures/" + QString().fromStdString( currentName );
 
     QPixmap pix( pixmapName );
 
@@ -413,12 +418,12 @@ OmgGame::saveConfigurationFile( QString fileName, std::set< std::string > textur
   _scenary->writeInfo( stream );
 
   stream->writeStartElement("weapons");
-  std::set< OmgWeapon* > weapons = getWeaponsSet();
-  std::set< OmgWeapon* >::iterator itWb = weapons.begin(), itWe = weapons.end(); 
+  std::set< QString > weapons = getWeaponsSet();
+  std::set< QString >::iterator itWb = weapons.begin(), itWe = weapons.end(); 
 
   for( ;itWb != itWe; ++itWb )
   {
-	OmgWeapon * weapon = (*itWb);
+	OmgWeapon * weapon = OmgWeaponsContainer::Instance()->getWeapon(QString(*itWb ));
 	if(weapon != 0)
 		weapon->writeInfo(stream);
   }

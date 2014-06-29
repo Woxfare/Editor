@@ -59,12 +59,12 @@ public:
      */
     virtual void writeInfo( QXmlStreamWriter *a_xml_stream );
 
-	Omega::EntityVector getWeapons();
+	std::vector<QString> getWeapons();
 
-	void setWeapons( Omega::EntityVector vWeapons );
+	void setWeapons( std::vector<QString> vWeapons );
 private:
 
-	Omega::EntityVector _weapons;
+	std::vector<QString> _weapons;
 };
 
 #endif // OMGPLAYER_H

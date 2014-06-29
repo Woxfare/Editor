@@ -3,17 +3,12 @@
 #include <QDebug>
 #include <QXmlStreamWriter>
 
-OmgEntity::OmgEntity(QString aName )
+OmgEntity::OmgEntity( const QString &aName, const QString &folderName ) : _name(aName), _folder( folderName ), _color( QColor(255,255,255) )
 {
-    _name = aName;
-    _type = Omega::Entity;
-    _color = QColor(255,255,255);
+
 }
 
-OmgEntity::~OmgEntity()
-{
-	int i = 0;
-}
+OmgEntity::~OmgEntity(){}
 
 QString
 OmgEntity::getName( void )

@@ -206,7 +206,7 @@ MouseScenaryEdit::wheelMoved(int delta)
                                                position.y - direction.y*increment,
                                                position.z - direction.z*increment );
 
-    Ogre::Ray cameraRay( newPosition, direction );
+    /*Ogre::Ray cameraRay( newPosition, direction );
 
     _p_raySceneQuery->setRay(cameraRay);
     _p_raySceneQuery->setSortByDistance(true,3);
@@ -220,7 +220,7 @@ MouseScenaryEdit::wheelMoved(int delta)
     float distance = itr->distance;
 
     if( distance < 5. )
-      return;
+      return;*/
 
     _radius += increment;
     _editScenaryCamera->setPosition( newPosition );
@@ -284,23 +284,23 @@ MouseScenaryEdit::getNewCameraRotationPos(Ogre::Radian newYaw, Ogre::Radian newP
                               _lastPnt.y + _radius*Ogre::Math::Sin(newPitch),
                               _lastPnt.z + _radius*Ogre::Math::Sin(newYaw)*Ogre::Math::Cos(newPitch));
 
-    if((newPitch).valueDegrees() < -89)
+    if((newPitch).valueDegrees() < -85)
     {
-        newPosition = Ogre::Vector3(_lastPnt.x + _radius*Ogre::Math::Cos(newYaw)*Ogre::Math::Cos(-89),
-                                    _lastPnt.y + _radius*Ogre::Math::Sin(-89),
-                                    _lastPnt.z + _radius*Ogre::Math::Sin(newYaw)*Ogre::Math::Cos(-89));
-    } else if ( (newPitch).valueDegrees() > 89 )
+        newPosition = Ogre::Vector3(_lastPnt.x + _radius*Ogre::Math::Cos(newYaw)*Ogre::Math::Cos(-85),
+                                    _lastPnt.y + _radius*Ogre::Math::Sin(-85),
+                                    _lastPnt.z + _radius*Ogre::Math::Sin(newYaw)*Ogre::Math::Cos(-85));
+    } else if ( (newPitch).valueDegrees() > 85 )
     {
-        newPosition = Ogre::Vector3(_lastPnt.x + _radius*Ogre::Math::Cos(newYaw)*Ogre::Math::Cos(Ogre::Degree(89)),
-                                    _lastPnt.y + _radius*Ogre::Math::Sin(Ogre::Degree(89)),
-                                    _lastPnt.z + _radius*Ogre::Math::Sin(newYaw)*Ogre::Math::Cos(Ogre::Degree(89)));
+        newPosition = Ogre::Vector3(_lastPnt.x + _radius*Ogre::Math::Cos(newYaw)*Ogre::Math::Cos(Ogre::Degree(85)),
+                                    _lastPnt.y + _radius*Ogre::Math::Sin(Ogre::Degree(85)),
+                                    _lastPnt.z + _radius*Ogre::Math::Sin(newYaw)*Ogre::Math::Cos(Ogre::Degree(85)));
     }
 
     return newPosition;
 }
 
 void
-MouseScenaryEdit::initControlerCamera( void )
+MouseScenaryEdit::fitControllerCamera( void )
 {
     _editScenaryCamera = OgreManager::getInstance()->getSceneManager()->getCamera("EditScenaryCamera");
     _radius = 60;
@@ -314,7 +314,26 @@ MouseScenaryEdit::initControlerCamera( void )
     _lastPitchValue = _pitchValue;
     _editScenaryCamera->moveRelative(Ogre::Vector3(0.0,0.0,_radius));
     _editScenaryCamera->lookAt(0,0,0);
+    rotateCam( 0, 0, _editScenaryCamera );
+ }
+
+void
+MouseScenaryEdit::initControlerCamera()
+{
+  _editScenaryCamera = OgreManager::getInstance()->getSceneManager()->getCamera("EditScenaryCamera");
+  _radius = 60;
+  _editScenaryCamera->setPosition(0.0,0.0,0.0);
+  _editScenaryCamera->setOrientation(Ogre::Quaternion::IDENTITY);
+  _yawValue = Ogre::Degree(0);
+  _lastYawValue = _yawValue;
+  _editScenaryCamera->yaw(_yawValue );
+  _pitchValue = Ogre::Degree(45);
+  _editScenaryCamera->pitch( _pitchValue );
+  _lastPitchValue = _pitchValue;
+  _editScenaryCamera->moveRelative(Ogre::Vector3(0.0,0.0,_radius));
+  _editScenaryCamera->lookAt(0,0,0);
 }
+
 
 void
 MouseScenaryEdit::addObjectToScene(Ogre::Ray mouseRay, int x, int y)

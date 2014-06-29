@@ -8,16 +8,13 @@
 #include "Utils/CubeUtils.h"
 #include <QXmlStreamWriter>
 
-OmgCube::OmgCube(QString a_name, std::map<std::string, std::string> a_textures, int rgb[3]) : OmgEntity ( a_name )
+OmgCube::OmgCube(const QString &a_name, const QString &folderName, std::map<std::string, std::string> a_textures, int rgb[3]) : OmgEntity( a_name, folderName )
 {
     _color.setRgb(rgb[0],rgb[1],rgb[2]);
     _m_textures = a_textures;
 }
 
-OmgCube::~OmgCube()
-{
-
-}
+OmgCube::~OmgCube(){}
 
 std::map<std::string, std::string>
 OmgCube::getTextures( void )

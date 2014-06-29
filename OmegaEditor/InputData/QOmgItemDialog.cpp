@@ -26,6 +26,13 @@ QOmgItemDialog::QOmgItemDialog(OmgItem* apItem, QWidget *parent  ) : InputData(p
     putItemInQt();
     OgreManager::getInstance()->selectScene("EditScenary");
     EditCubeManager::getInstance()->clearEditCube();
+
+    if(!apItem)
+      return;
+
+    int rgb[3] = { apItem->getColor().red(), apItem->getColor().green(), apItem->getColor().blue() };
+    EditCubeManager::getInstance()->changeEditCubeColor( rgb );
+    EditCubeManager::getInstance()->changeEditCubeTextures( apItem->getTextures() );
 }
 
 QOmgItemDialog::~QOmgItemDialog()
@@ -121,8 +128,8 @@ QOmgItemDialog::putItemInQt()
         
         ui->folderList->setCurrentItem( getListItem( _item->getFolderName(), ui->folderList ));
 
-        if( _item->getWeapon() )
-          ui->weaponList->setCurrentItem( getListItem( _item->getWeapon()->getName(), ui->weaponList ));
+        if( _item->getWeapon() != "" )
+          ui->weaponList->setCurrentItem( getListItem( _item->getWeapon(), ui->weaponList ));
 
         if(_item->itemType() == Omega::Ammo )
           ui->bulletSpin->setValue( _item->getQuantity() );
@@ -278,11 +285,11 @@ QOmgItemDialog::createItem( )
   QColorButton *colorButton = dynamic_cast<QColorButton*>( ui->widget );
   QColor color = colorButton->getSelectedColor();
   int rgb[3] = {color.red(), color.green(), color.blue()};
-  OmgItem *newItem = new OmgItem( ui->_name->text(), EditCubeManager::getInstance()->getEditCube(), rgb);
+  OmgItem *newItem = new OmgItem( ui->_name->text(),ui->folderList->currentItem()->text(), EditCubeManager::getInstance()->getEditCube(), rgb);
   newItem->setItemType(getItemTypeFromQt());
   newItem->setFolderName(ui->folderList->currentItem()->text());
   if( newItem->itemType() == Omega::Ammo )
-    newItem->setWeapon( OmgWeaponsContainer::Instance()->getWeapon( ui->weaponList->currentItem()->text() ) );
+    newItem->setWeapon( ui->weaponList->currentItem()->text() );
   
   if( newItem->itemType() == Omega::Ammo )
     newItem->setQuantity( ui->bulletSpin->value() );

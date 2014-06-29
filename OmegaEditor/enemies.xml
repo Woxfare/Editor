@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<omega>
+    <enemy name="SoldadoImperial" folder="DefaultEnemies">
+        <color r="255" g="255" b="255"/>
+        <life value="500"/>
+        <points value="0"/>
+        <type value="Runner"/>
+        <item value="Health"/>
+        <textures>
+            <Head Back="head6.png" Bottom="head5.png" Front="head.png" Left="head4.png" Right="head3.png" Top="head2.png"/>
+            <Body Back="body3.png" Bottom="lef1.png" Front="body1.png" Left="body2.png" Right="body2.png" Top=""/>
+            <ArmL Back="arm.png" Bottom="lef1.png" Front="arm.png" Left="" Right="arm.png" Top=""/>
+            <ArmR Back="arm.png" Bottom="lef1.png" Front="arm.png" Left="arm.png" Right="" Top=""/>
+            <LegL Back="lef1.png" Bottom="lef1.png" Front="lef1.png" Left="lef1.png" Right="lef1.png" Top=""/>
+            <LegR Back="lef1.png" Bottom="lef1.png" Front="lef1.png" Left="lef1.png" Right="lef1.png" Top=""/>
+        </textures>
+    </enemy>
+</omega>

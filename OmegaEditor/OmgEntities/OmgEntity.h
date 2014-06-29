@@ -50,7 +50,7 @@ public:
      * \brief OmgEntity Default Constructor
      * \param a_name
      */
-    OmgEntity(QString aName);
+    OmgEntity( const QString &aName, const QString &folderName );
 
 	virtual ~OmgEntity();
 

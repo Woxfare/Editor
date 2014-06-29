@@ -45,7 +45,7 @@ public:
     //? String Constructor
     //> QString a_name
     //> std::map<std::string, std::string> a_texture
-    OmgSceneObj(QString a_name, std::map<std::string, std::string> a_textures, int rgb[3]);
+    OmgSceneObj( QString &a_name, const QString &folderName, std::map<std::string, std::string> a_textures, int rgb[3]);
 
     //- OmgSceneObj
     //? Default Destructor

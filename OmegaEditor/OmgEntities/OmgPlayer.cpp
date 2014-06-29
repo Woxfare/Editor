@@ -31,11 +31,10 @@ OmgPlayer::writeInfo( QXmlStreamWriter *a_xml_stream )
   a_xml_stream->writeStartElement("weapons");
   a_xml_stream->writeAttribute("number", QString("%1").arg( _weapons.size() ) );
 
-  for( Omega::EntityIterator it = _weapons.begin(); it != _weapons.end();  ++it )
+  for( std::vector<QString>::iterator it = _weapons.begin(); it != _weapons.end();  ++it )
   {
-	  OmgWeapon* weapon = dynamic_cast<OmgWeapon*>(*it);
 	  a_xml_stream->writeStartElement("weapon");
-	  a_xml_stream->writeAttribute("name", weapon->getName() );
+	  a_xml_stream->writeAttribute("name", *it );
 	  a_xml_stream->writeEndElement(); // weapons
   }
 
@@ -45,14 +44,14 @@ OmgPlayer::writeInfo( QXmlStreamWriter *a_xml_stream )
   a_xml_stream->writeEndElement(); // player
 }
 
-Omega::EntityVector
+std::vector<QString>
 OmgPlayer::getWeapons()
 {
 	return _weapons;
 }
 
 void
-OmgPlayer::setWeapons( Omega::EntityVector aWeapons )
+OmgPlayer::setWeapons( std::vector<QString> aWeapons )
 {
 	_weapons = aWeapons;
 }

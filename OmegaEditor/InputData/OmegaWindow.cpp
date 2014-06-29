@@ -52,7 +52,8 @@ OmegaWindow::OmegaWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::Omeg
     mTimer->setInterval(0);
     connect(mTimer, SIGNAL(timeout()), this, SLOT(timerLoop()));
     mTimer->start();
-	mCharacterSelector = 0;
+	  mCharacterSelector = 0;
+    QObject::connect( ui->actionFit, SIGNAL(triggered()), this, SLOT(on_actionFit_triggered()) );
 }
 void
 OmegaWindow::timerLoop()
@@ -275,6 +276,8 @@ void OmegaWindow::on_treeWidget_itemClicked(QTreeWidgetItem *item, int /*column*
             on_actionEdit_Player_triggered( p_player );
         else
             on_actionNew_Player_triggered();
+
+
     break;
     }
     case Omega::WeaponLeaf:
@@ -546,5 +549,14 @@ OmegaWindow::hideEditScenearyWidget()
 CharacterPartsSelectorWidget*
 OmegaWindow::getCharacterPartSelector()
 {
+  if(!mCharacterSelector)
+    mCharacterSelector =  new CharacterPartsSelectorWidget( this );
+
 	return mCharacterSelector;
+}
+
+void
+OmegaWindow::on_actionFit_triggered()
+{
+  InputManager::getInstance()->getController(OgreManager::getInstance()->getCurrentScene())->fitControllerCamera();
 }

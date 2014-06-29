@@ -1,7 +1,7 @@
 /*
-				 ___  __  __ ______  ____  ___
-				/ _ \|  \/  |  ____|/ ___|/ _ \
-	 		   | | | |      | |__  | |   | | | |
+				         ___  __  __ ______  ____  ___
+				        / _ \|  \/  |  ____|/ ___|/ _ \
+	 		         | | | |      | |__  | |   | | | |
                | | | | |\/| |  __| | |  _| |_| |
                | |_| | |  | | |____| |_| |  _  |
                 \___/|_|  |_|______|\____|_| |_|
@@ -36,16 +36,24 @@
 #include <map>
 #include <QFile>
 #include <Ogre.h>
+#include <QXmlStreamReader>
 
 class QString;
-class QXmlStreamReader;
 
 class OmgEntity;
 
 class EntitiesXMLReader
  {
 public:
-  EntitiesXMLReader( const QString a_fileName );
+  EntitiesXMLReader( const QString &a_fileName );
+
+  void executeForEnemies();
+  void executeForPlayers();
+  void executeForSceneObj();
+  void executeForItems();
+  void executeForWeapons();
+  void executeForMaps();
+  void executeForGames();
 
 private:
 
@@ -62,6 +70,10 @@ private:
   void parseCubeTextures( QXmlStreamReader& xml, std::map<std::string, std::string>& ar_textures );
   void parseMapObjects( QXmlStreamReader& xml, std::vector< std::pair < std::string, std::vector< Ogre::Vector3 > > >& ar_objects );
   void parseSingleCube( QXmlStreamReader& xml, std::pair< std::string, std::vector< Ogre::Vector3 > > &cube );
+
+  QXmlStreamReader mXmlStream;
+  QFile            mFile;
+  bool             streamOpened;
 };
 
 #endif // EntitiesXMLReader_H

@@ -31,12 +31,7 @@ CharacterPartsSelectorWidget::CharacterPartsSelectorWidget(QWidget *parent) :
     ui->rightLeg->setStyleSheet( pushedStyle );
     ui->leftArm->setStyleSheet( pushedStyle );
     ui->leftLeg->setStyleSheet( pushedStyle );
-	_map_icons_parts[head]		= QIcon();
-	_map_icons_parts[body]		= QIcon();
-	_map_icons_parts[legLeft]	= QIcon();
-	_map_icons_parts[armLeft]	= QIcon();
-	_map_icons_parts[legRight]	= QIcon();
-	_map_icons_parts[legLeft]	= QIcon();
+    clearSelector();
 
     ShowSelectedParts();
 }
@@ -251,4 +246,21 @@ CharacterPartsSelectorWidget::changeTextureOfPart( characterParts part, QString 
 		}
 		break;
 	}
+}
+
+void
+CharacterPartsSelectorWidget::clearSelector()
+{
+  _map_icons_parts[head]		= QIcon();
+  _map_icons_parts[body]		= QIcon();
+  _map_icons_parts[legLeft]	= QIcon();
+  _map_icons_parts[armLeft]	= QIcon();
+  _map_icons_parts[legRight]	= QIcon();
+  _map_icons_parts[legLeft]	= QIcon();
+  changeTextureOfPart( head, "" );
+  changeTextureOfPart( body,"" );
+  changeTextureOfPart( legLeft, "" );
+  changeTextureOfPart( armLeft, "" );
+  changeTextureOfPart( legRight, "" );
+  changeTextureOfPart( legLeft, "" );
 }

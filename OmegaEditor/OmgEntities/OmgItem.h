@@ -35,7 +35,6 @@
 #include "OmgCube.h"
 #include "InputData/QOmgListItem.h"
 
-class OmgWeapon;
 class QXmlStreamWriter;
 
 class OmgItem : public OmgCube
@@ -48,7 +47,7 @@ public:
      * \param aTextures
      * \param avRgb
      */
-    OmgItem(QString aName, std::map<std::string, std::string> aTextures, int avRgb[3]);
+    OmgItem( const QString &aName, const QString &folderName, std::map<std::string, std::string> aTextures, int avRgb[3]);
 
     /*!
      * \brief OmgItem Default Destructor
@@ -77,13 +76,13 @@ public:
      * \brief getWeapon
      * \return
      */
-    OmgWeapon* getWeapon( void );
+    QString getWeapon( void );
 
     /*!
      * \brief setWeapon
      * \return
      */
-    void setWeapon( OmgWeapon* weapon );
+    void setWeapon( QString weapon );
 
     /*!
      * \brief getWeapon
@@ -109,7 +108,7 @@ private:
      */
     Omega::ItemType _itemType;
 
-    OmgWeapon* weapon;
+    QString weaponName;
 
     int quantity;
 };

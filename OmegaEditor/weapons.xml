@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<omega>
+    <weapon name="dddd" folder="DefaultWeapons">
+        <color r="85" g="85" b="0"/>
+        <type value="BlastShot"/>
+        <features bullets="15" damage="30"/>
+    </weapon>
+</omega>

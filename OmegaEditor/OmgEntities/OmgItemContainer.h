@@ -1,7 +1,7 @@
 /*
-				 ___  __  __ ______  ____  ___
-				/ _ \|  \/  |  ____|/ ___|/ _ \
-	 		   | | | |      | |__  | |   | | | |
+				         ___  __  __ ______  ____  ___
+				        / _ \|  \/  |  ____|/ ___|/ _ \
+	 		         | | | |      | |__  | |   | | | |
                | | | | |\/| |  __| | |  _| |_| |
                | |_| | |  | | |____| |_| |  _  |
                 \___/|_|  |_|______|\____|_| |_|
@@ -97,12 +97,6 @@ public:
      * \brief Destructor
      */
     ~OmgItemContainer();
-
-    /*!
-     * \brief buildItem
-     * \param aItemParams
-     */
-    void buildItem( QStringList aItemParams );
 
 protected:
     /*!

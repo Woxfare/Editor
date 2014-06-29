@@ -47,6 +47,7 @@ public:
     explicit CharacterPartsSelectorWidget(QWidget *parent = 0);
     ~CharacterPartsSelectorWidget();
 	void changeTextureOfPart( characterParts part, QString textureName );
+      void clearSelector();
 
 private slots:
     void on_head_clicked();

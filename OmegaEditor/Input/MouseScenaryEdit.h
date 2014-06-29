@@ -1,7 +1,7 @@
 /*
-				 ___  __  __ ______  ____  ___
-				/ _ \|  \/  |  ____|/ ___|/ _ \
-	 		   | | | |      | |__  | |   | | | |
+				         ___  __  __ ______  ____  ___
+				        / _ \|  \/  |  ____|/ ___|/ _ \
+	 		         | | | |      | |__  | |   | | | |
                | | | | |\/| |  __| | |  _| |_| |
                | |_| | |  | | |____| |_| |  _  |
                 \___/|_|  |_|______|\____|_| |_|
@@ -148,6 +148,8 @@ public:
     virtual void rotateCam(Ogre::Real dx, Ogre::Real dy, Ogre::Camera *cam);
 
     void arrowKeyPressed( Qt::Key key );
+
+    virtual void fitControllerCamera();
 
 private:
 

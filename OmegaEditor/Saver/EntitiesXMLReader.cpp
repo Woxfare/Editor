@@ -22,55 +22,187 @@
 #include "OmgEntities/OmgGameContainer.h"
 #include "InputData/QOmgWindowMngr.h"
 
-EntitiesXMLReader::EntitiesXMLReader( const QString a_fileName )
+EntitiesXMLReader::EntitiesXMLReader( const QString &a_fileName ) : streamOpened( false )
 {
    if( a_fileName == "" )
     return;
 
-  QFile file(a_fileName);
-  if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+  mFile.setFileName(a_fileName);
+  if (!mFile.open(QIODevice::ReadOnly | QIODevice::Text))
     return;
 
-  QXmlStreamReader xml;
+  mXmlStream.setDevice( &mFile );
+  streamOpened = true;
+}
 
-  xml.setDevice( &file );
+void
+EntitiesXMLReader::executeForEnemies()
+{
+  if( !streamOpened )
+    return;
 
-  bool endOfFile( xml.atEnd() );
-  while (!endOfFile ) 
+  while (!mXmlStream.atEnd() ) 
   {
-    QString debugName = xml.name().toString();
-    if( xml.isStartElement() )
+    if( mXmlStream.isStartElement() )
     {
-      if(xml.name() == "player")
-        parsePlayer(xml);
-      if(xml.name() == "enemy")
-        parseEnemy(xml);
-      if(xml.name() == "sceneobject")
-        parseSceneObject(xml);
-      if(xml.name() == "item")
-        parseItem(xml);
-      if(xml.name() == "map")
-        parseMap(xml);
-      if(xml.name() == "game")
-        parseGame(xml);
-      if(xml.name() == "weapon")
-        parseWeapon(xml);
-
-      xml.readNext();
+      if(mXmlStream.name() == "enemy")
+        parseEnemy(mXmlStream);
+      mXmlStream.readNext();
     } else {
-      xml.readNext();
+      mXmlStream.readNext();
     }
-
-    endOfFile = xml.atEnd();
   }
 
-  if (xml.hasError()) {
+  if (mXmlStream.hasError()) {
     //... // do error handling
   }
 
-  QOmgWindowMngr::Instance()->GetMainWindow()->UpdateWidgets();
+  mFile.close();
+}
 
-  file.close();
+void
+EntitiesXMLReader::executeForPlayers()
+{
+  if( !streamOpened )
+    return;
+
+  while (!mXmlStream.atEnd() ) 
+  {
+    if( mXmlStream.isStartElement() )
+    {
+      if(mXmlStream.name() == "player")
+        parsePlayer(mXmlStream);
+      mXmlStream.readNext();
+    } else {
+      mXmlStream.readNext();
+    }
+  }
+
+  if (mXmlStream.hasError()) {
+    //... // do error handling
+  }
+
+  mFile.close();
+}
+void
+EntitiesXMLReader::executeForItems()
+{
+  if( !streamOpened )
+    return;
+
+  while (!mXmlStream.atEnd() ) 
+  {
+    if( mXmlStream.isStartElement() )
+    {
+      if(mXmlStream.name() == "item")
+        parseItem(mXmlStream);
+      mXmlStream.readNext();
+    } else {
+      mXmlStream.readNext();
+    }
+  }
+
+  if (mXmlStream.hasError()) {
+    //... // do error handling
+  }
+
+  mFile.close();
+}
+void
+  EntitiesXMLReader::executeForSceneObj()
+{
+  if( !streamOpened )
+    return;
+
+  while (!mXmlStream.atEnd() ) 
+  {
+    if( mXmlStream.isStartElement() )
+    {
+      if(mXmlStream.name() == "sceneobject")
+        parseSceneObject(mXmlStream);
+      mXmlStream.readNext();
+    } else {
+      mXmlStream.readNext();
+    }
+  }
+
+  if (mXmlStream.hasError()) {
+    //... // do error handling
+  }
+
+  mFile.close();
+}
+void
+EntitiesXMLReader::executeForMaps()
+{
+  if( !streamOpened )
+    return;
+
+  while (!mXmlStream.atEnd() ) 
+  {
+    if( mXmlStream.isStartElement() )
+    {
+      if(mXmlStream.name() == "map")
+        parseMap(mXmlStream);
+      mXmlStream.readNext();
+    } else {
+      mXmlStream.readNext();
+    }
+  }
+
+  if (mXmlStream.hasError()) {
+    //... // do error handling
+  }
+
+  mFile.close();
+}
+void
+EntitiesXMLReader::executeForGames()
+{
+  if( !streamOpened )
+    return;
+
+  while (!mXmlStream.atEnd() ) 
+  {
+    if( mXmlStream.isStartElement() )
+    {
+      if(mXmlStream.name() == "game")
+        parseGame(mXmlStream);
+      mXmlStream.readNext();
+    } else {
+      mXmlStream.readNext();
+    }
+  }
+
+  if (mXmlStream.hasError()) {
+    //... // do error handling
+  }
+
+  mFile.close();
+}
+void
+EntitiesXMLReader::executeForWeapons()
+{
+  if( !streamOpened )
+    return;
+
+  while (!mXmlStream.atEnd() ) 
+  {
+    if( mXmlStream.isStartElement() )
+    {
+      if(mXmlStream.name() == "weapon")
+        parseWeapon(mXmlStream);
+      mXmlStream.readNext();
+    } else {
+      mXmlStream.readNext();
+    }
+  }
+
+  if (mXmlStream.hasError()) {
+    //... // do error handling
+  }
+
+  mFile.close();
 }
 
 void
@@ -121,15 +253,16 @@ EntitiesXMLReader::parsePlayer( QXmlStreamReader& xml )
 
     if( xml.name() == "weapons")
     {
-		Omega::EntityVector vWeapons;
+		std::vector<QString> vWeapons;
 		while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "weapons"))
-		{
-			QString debugName = xml.name().toString();
+		{			QString debugName = xml.name().toString();
 			
 			if( xml.isStartElement() )
 			{
-				if( xml.name() == "weapon")
-					vWeapons.push_back( OmgWeaponsContainer::Instance()->getWeapon( xml.attributes().value("name").toString()));
+				if( xml.name() == "weapon" )
+					vWeapons.push_back( xml.attributes().value("name").toString());
+
+        xml.readNext();
 			}
 			else 
 				xml.readNext();
@@ -275,8 +408,7 @@ EntitiesXMLReader::parseSceneObject( QXmlStreamReader& xml )
 
   int rgb[3] = { color.red(), color.green(), color.blue() };
   
-  OmgSceneObj* newSceneObj = new OmgSceneObj( sceneObjName, textures, rgb );
-  newSceneObj->setFolderName( sceneObjFolder );
+  OmgSceneObj* newSceneObj = new OmgSceneObj( sceneObjName, sceneObjFolder, textures, rgb );
   newSceneObj->setColor( color );
   newSceneObj->setObjectType( type );
   
@@ -288,7 +420,7 @@ EntitiesXMLReader::parseItem( QXmlStreamReader& xml )
 {
   QString itemName = xml.attributes().value("name").toString();
   QString itemFolder = xml.attributes().value("folder").toString();
-  OmgWeapon* weapon = NULL;
+  QString weapon;
   int quantity = 0;
 
   if( !OmgFoldersMngr::Instance()->getFolder(itemFolder))
@@ -314,7 +446,7 @@ EntitiesXMLReader::parseItem( QXmlStreamReader& xml )
 
     if( xml.name() == "weapon")
     {
-      weapon = OmgWeaponsContainer::Instance()->getWeapon( xml.attributes().value("name").toString() );
+      weapon = xml.attributes().value("name").toString();
     }
 
     if( xml.name() == "color")
@@ -348,8 +480,7 @@ EntitiesXMLReader::parseItem( QXmlStreamReader& xml )
     color.blue()
   };
 
-  OmgItem* newItem = new OmgItem( itemName, textures, rgb );
-  newItem->setFolderName( itemFolder );
+  OmgItem* newItem = new OmgItem( itemName, itemFolder, textures, rgb );
   newItem->setColor( color );
   newItem->setItemType( type );
   newItem->setWeapon( weapon );
@@ -443,7 +574,7 @@ EntitiesXMLReader::parseMap( QXmlStreamReader& xml )
 
       if( xml.name() == "terrain")
       {
-        newMap->setTerrainTextureName( xml.attributes().value("name").toString() );
+        newMap->setTerrainTextureName( xml.attributes().value("texture").toString() );
       }
 
       if( xml.name() == "objects")

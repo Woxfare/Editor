@@ -4,6 +4,7 @@
 #include "Utils/OgreManager.h"
 #include <QString>
 #include "Utils/CubeUtils.h"
+#include "InputData/QOmgWindowMngr.h"
 
 EditCharacterManager * EditCharacterManager::_p_instance = NULL;
 
@@ -73,6 +74,14 @@ EditCharacterManager::clearCharacter( void )
   CubeUtils::clearTexturesOfCube( "CharacterArmR" );
   CubeUtils::clearTexturesOfCube( "CharacterLegL" );
   CubeUtils::clearTexturesOfCube( "CharacterLegR" );
+
+  // Clear as well the widget
+  QOmgWindowMngr::Instance()->GetMainWindow()->getCharacterPartSelector()->changeTextureOfPart( head, "");
+  QOmgWindowMngr::Instance()->GetMainWindow()->getCharacterPartSelector()->changeTextureOfPart( body, "");
+  QOmgWindowMngr::Instance()->GetMainWindow()->getCharacterPartSelector()->changeTextureOfPart( armLeft, "");
+  QOmgWindowMngr::Instance()->GetMainWindow()->getCharacterPartSelector()->changeTextureOfPart( armRight, "");
+  QOmgWindowMngr::Instance()->GetMainWindow()->getCharacterPartSelector()->changeTextureOfPart( legLeft, "");
+  QOmgWindowMngr::Instance()->GetMainWindow()->getCharacterPartSelector()->changeTextureOfPart( legRight, "");
 }
 
 std::map<std::string, std::string>
@@ -127,6 +136,8 @@ EditCharacterManager::setCharacterPart( characterParts aPart, std::map<std::stri
     CubeUtils::setTexturesToCube("CharacterLegR", textures);
     break;
   }
+
+  QOmgWindowMngr::Instance()->GetMainWindow()->getCharacterPartSelector()->changeTextureOfPart( aPart, QString().fromStdString( textures["Front"] ));
 }
 
 std::map<std::string, std::map<std::string, std::string>>

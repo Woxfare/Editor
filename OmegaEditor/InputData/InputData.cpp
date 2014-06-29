@@ -6,10 +6,12 @@
 #include <QListWidgetItem>
 #include <QListWidget>
 #include <QList>
+#include "Utils/OgreManager.h"
 
 InputData::InputData( QWidget *parent ) : QDialog( parent )
 {
   setStyleSheet(QOmgStyle::CurrentStyleSheet());
+  OgreManager::getInstance()->selectScene("EditScenary");
 }
 
 void

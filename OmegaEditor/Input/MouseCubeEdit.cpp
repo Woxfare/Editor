@@ -136,6 +136,24 @@ MouseCubeEdit::initControlerCamera( void )
 }
 
 void
+MouseCubeEdit::fitControllerCamera(void )
+{
+  _editCubeCamera= OgreManager::getInstance()->getSceneManager()->getCamera("EditCubeCamera");
+  Ogre::Real radius = 4;
+  _editCubeCamera->setPosition(0.0,0.0,0.0);
+  _editCubeCamera->setOrientation(Ogre::Quaternion::IDENTITY);
+  _yawValue = Ogre::Degree(20);
+  _lastYawValue = _yawValue;
+  _editCubeCamera->yaw(_yawValue );
+  _pitchValue = Ogre::Degree(40);
+  _editCubeCamera->pitch( _pitchValue );
+  _lastPitchValue = _pitchValue;
+  _editCubeCamera->moveRelative(Ogre::Vector3(0.0,0.0,radius));
+  _editCubeCamera->lookAt(0,0,0);
+  rotateCam(0,0,_editCubeCamera);
+}
+
+void
 MouseCubeEdit::changeTextureOfFace(Ogre::ManualObject *selectedFace, QWidget * widget )
 {
     //QFileDialog::
@@ -161,7 +179,7 @@ MouseCubeEdit::changeTextureOfFace(Ogre::ManualObject *selectedFace, QWidget * w
             QPixmap image;
             image.load(absFilename);
             image = image.scaled( QSize( 128, 128 ), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-            QFile file("./mediaOgre/materials/textures/" + name);
+            QFile file("./Resources/materials/textures/" + name);
             file.open(QIODevice::WriteOnly);
             image.save(&file, "PNG");
             file.close();
@@ -174,8 +192,6 @@ MouseCubeEdit::changeTextureOfFace(Ogre::ManualObject *selectedFace, QWidget * w
 
     } catch( Ogre::Exception e )
     {
-        qDebug() << "Recovered";
-
         //! Cuando llega aqui es porque ha habido un error al cargar el archivo, pero ahora el archivo esta en mediaOgre copiado y correcto para poder mapearlo en
         //! la box, asi que volvemos a intentar poner la imagen.
         selectedFace->getSection(0)->getMaterial()->getTechnique(0)->getPass(0)->removeAllTextureUnitStates();

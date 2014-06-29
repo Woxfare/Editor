@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<omega>
+    <item name="Health" folder="DefaultItems">
+        <color r="255" g="170" b="0"/>
+        <type value="Health" quantity="500"/>
+        <textures Back="tnt.png" Bottom="tnt.png" Front="tnt.png" Left="tnt.png" Right="tnt.png" Top="tnt.png"/>
+    </item>
+    <item name="HealthPlus" folder="DefaultItems">
+        <color r="255" g="255" b="255"/>
+        <type value="Health" quantity="1000"/>
+        <textures Back="lifeItem.png" Bottom="lifeItem.png" Front="lifeItem.png" Left="lifeItem.png" Right="lifeItem.png" Top="lifeItem.png"/>
+    </item>
+    <item name="MetalBoxItem" folder="DefaultItems">
+        <color r="170" g="85" b="255"/>
+        <type value="Gold" quantity="700"/>
+        <textures Back="1045742-xs.png" Bottom="1045742-xs.png" Front="1045742-xs.png" Left="1045742-xs.png" Right="1045742-xs.png" Top="1045742-xs.png"/>
+    </item>
+</omega>

@@ -43,7 +43,7 @@ public:
     /*!
      * \brief Constructor
      */
-    OmgCube(QString a_name, std::map<std::string, std::string> a_textures, int rgb[3]);
+    OmgCube( const QString &a_name, const QString &folderName, std::map<std::string, std::string> a_textures, int rgb[3] );
 
     /*!
      * \brief Destructor

@@ -66,9 +66,32 @@ int main(int argc, char *argv[])
   InputManager::getInstance()->getController("EditCube")->rotateCam(0,0,OgreManager::getInstance()->getSceneManager()->getCamera("EditCubeCamera"));
   InputManager::getInstance()->getController("EditCharacter")->rotateCam(0,0, OgreManager::getInstance()->getSceneManager()->getCamera("EditCharacterCamera"));
 
-  splash.showMessage("Reading user entities");
-  EntitiesXMLReader("entities.xml");
-  splash.showMessage("Loaded!!");
+  splash.showMessage("Reading weapons");
+  EntitiesXMLReader xmlReaderWeapons("weapons.xml");
+  xmlReaderWeapons.executeForWeapons();
+  splash.showMessage("Reading players...");
+  EntitiesXMLReader xmlReaderPlayers("players.xml");
+  xmlReaderPlayers.executeForPlayers();
+  splash.showMessage("Reading enemies");
+  EntitiesXMLReader xmlReaderEnemies("enemies.xml");
+  xmlReaderEnemies.executeForEnemies();
+  splash.showMessage("Reading scene objects");
+  EntitiesXMLReader xmlReaderSceneObj("sceneobj.xml");
+  xmlReaderSceneObj.executeForSceneObj();
+  splash.showMessage("Reading items");
+  EntitiesXMLReader xmlReaderItems("items.xml");
+  xmlReaderItems.executeForItems();
+  splash.showMessage("Reading map");
+  EntitiesXMLReader xmlReaderMaps("map.xml");
+  xmlReaderMaps.executeForMaps();
+  splash.showMessage("Reading games");
+  EntitiesXMLReader xmlReaderGames("games.xml");
+  xmlReaderGames.executeForGames();
+
+
+  splash.showMessage("Update Widgets");
+  QOmgWindowMngr::Instance()->GetMainWindow()->UpdateWidgets();
+
   w->show();
 
   splash.finish(w);

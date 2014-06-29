@@ -47,53 +47,12 @@ OmgSaverMngr::addEntityToSave(OmgEntity *aEntity)
 void
 OmgSaverMngr::saveAll( void )
 {
-    //!
-    //! Get all the entities..
-    //!
-    Omega::EntityVector vEntities;
-
-    Omega::EntityVector vPlayers = OmgPlayerContainer::Instance()->availablePlayers();
-    Omega::EntityVector vEnemies = OmgEnemyContainer::Instance()->availableEnemies();
-    Omega::EntityVector vSceneObj = OmgSceneObjContainer::Instance()->GetAvailableSceneObjects();
-    Omega::EntityVector vItems = OmgItemContainer::Instance()->availableItems();
-    Omega::EntityVector vWeapons = OmgWeaponsContainer::Instance()->availableWeapons();
-    Omega::EntityVector vMaps = OmgMapContainer::Instance()->availableMaps();
-    Omega::EntityVector vGames = OmgGameContainer::Instance()->availableGames();
-
-    Omega::EntityIterator it;
-
-    it = vWeapons.begin(); // The rest of the entities need the weapons, first write the weapons
-    for(; it!= vWeapons.end(); ++it )
-      vEntities.push_back(*it);
-
-    it = vPlayers.begin();
-    for(; it!= vPlayers.end(); ++it )
-        vEntities.push_back(*it);
-
-    it = vEnemies.begin();
-
-    for(; it!= vEnemies.end(); ++it )
-        vEntities.push_back(*it);
-
-    it = vSceneObj.begin();
-
-    for(; it!= vSceneObj.end(); ++it )
-        vEntities.push_back(*it);
-
-    it = vItems.begin();
-
-    for(; it!= vItems.end(); ++it )
-        vEntities.push_back(*it);
-
-    it = vMaps.begin();
-    for(; it!= vMaps.end(); ++it )
-      vEntities.push_back(*it);
-
-    it = vGames.begin();
-    for(; it!= vGames.end(); ++it )
-      vEntities.push_back(*it);
-
-    EntitiesXMLWriter xmlWriter( vEntities, "entities.xml" );
-
-    _allSaved = true;
+	EntitiesXMLWriter xmlWriterPlayers(   OmgPlayerContainer::Instance()->availablePlayers(),           "players.xml" );
+	EntitiesXMLWriter xmlWriterEnemies(	  OmgEnemyContainer::Instance()->availableEnemies(),            "enemies.xml" );
+	EntitiesXMLWriter xmlWriterSceneObj(  OmgSceneObjContainer::Instance()->GetAvailableSceneObjects(), "sceneobj.xml" );
+	EntitiesXMLWriter xmlWriterItems(     OmgItemContainer::Instance()->availableItems(),               "items.xml" );
+	EntitiesXMLWriter xmlWriterWeapons(   OmgWeaponsContainer::Instance()->availableWeapons(),          "weapons.xml" );
+	EntitiesXMLWriter xmlWriterMaps(      OmgMapContainer::Instance()->availableMaps(),                 "map.xml" );
+	EntitiesXMLWriter xmlWriterGames(     OmgGameContainer::Instance()->availableGames(),               "games.xml" );
+  _allSaved = true;
 }

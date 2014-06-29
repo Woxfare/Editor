@@ -11,13 +11,15 @@ CubeUtils::setTexturesToCube( Ogre::String baseName, std::map<std::string, std::
 
     for( ; it!=it_end; ++it )
     {
-      if( (std::string)(*it).second == "" )
-        continue;
 
       std::string completeNameFace = baseName + "Mat" + (std::string)(*it).first; // Generate all the name of the material
 
       Ogre::MaterialPtr materialPtr = Ogre::MaterialManager::getSingleton().getByName(completeNameFace, Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
       materialPtr->getTechnique(0)->getPass(0)->removeAllTextureUnitStates();
+
+      if( (std::string)(*it).second == "" )
+        continue;
+
       materialPtr->getTechnique(0)->getPass(0)->createTextureUnitState( (std::string)(*it).second );
     }
   } catch(Ogre::Exception e) {
@@ -354,19 +356,24 @@ CubeUtils::createCubeMesh(std::string name, std::map<std::string, std::string> t
   for( int i = 0; i < 6; ++i )
   {
 	  textureName = textures[texturesPositions[i]];
-	  if( textureName != "" )
+	  if( textureName != "" ) // There is a texture in that face
 	  {
-		if( map_texture_materials.find(textureName) != map_texture_materials.end() )
-		{
-			material = map_materials[map_texture_materials[textureName]];
-		}
-		else
-		{
-			material = matColour->clone( name + "Mat" + texturesPositions[i] );
-			material->getTechnique(0)->getPass(0)->createTextureUnitState(textureName);
-			map_texture_materials[textureName] = texturesPositions[i];
-		}
-	  }
+      if( map_texture_materials.find(textureName) != map_texture_materials.end() )
+      {
+        // the texture is already in another face, copy de material
+        material = map_materials[map_texture_materials[textureName]];
+      }
+      else
+      {
+        // Create a new material with the base color and the texture
+        material = matColour->clone( name + "Mat" + texturesPositions[i] );
+        material->getTechnique(0)->getPass(0)->createTextureUnitState(textureName);
+        map_texture_materials[textureName] = texturesPositions[i];
+      }
+	  } else {
+      // No texture
+      material = matColour;
+    }
 
 	  map_materials[texturesPositions[i]] = material;
   }
